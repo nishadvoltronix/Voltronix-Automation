@@ -1,0 +1,279 @@
+/* Animated Background Styles */
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Industrial Machinery Silhouettes */
+.machinery-silhouette {
+  position: absolute;
+  bottom: 0;
+  opacity: 0.1;
+  animation: machineryMove 30s linear infinite;
+}
+
+/* Floating Industrial Icons */
+.floating-icon {
+  position: absolute;
+  opacity: 0.3;
+  animation: floatIcon 20s ease-in-out infinite;
+}
+
+.floating-icon.gear {
+  color: var(--accent-blue);
+  animation-duration: 25s;
+}
+
+.floating-icon.circuit {
+  color: var(--accent-orange);
+  animation-duration: 18s;
+}
+
+.floating-icon.chip {
+  color: var(--success);
+  animation-duration: 22s;
+}
+
+/* Background Grid Animation */
+.bg-grid {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background-image: 
+    linear-gradient(rgba(0, 212, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.02) 1px, transparent 1px);
+  background-size: 100px 100px;
+  animation: gridDrift 40s linear infinite;
+}
+
+/* Animated Gradient Orbs */
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.4;
+  animation: orbFloat 15s ease-in-out infinite;
+}
+
+.gradient-orb.blue {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+  top: -200px;
+  left: -200px;
+  animation-delay: 0s;
+}
+
+.gradient-orb.orange {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent-orange) 0%, transparent 70%);
+  bottom: -150px;
+  right: -150px;
+  animation-delay: -7s;
+}
+
+.gradient-orb.green {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--success) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  animation-delay: -3s;
+}
+
+/* Animations */
+@keyframes machineryMove {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes floatIcon {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(50px, -30px) rotate(90deg);
+  }
+  50% {
+    transform: translate(0, -60px) rotate(180deg);
+  }
+  75% {
+    transform: translate(-50px, -30px) rotate(270deg);
+  }
+}
+
+@keyframes gridDrift {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100px, -100px);
+  }
+}
+
+@keyframes orbFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+    opacity: 0.5;
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+    opacity: 0.3;
+  }
+}
+
+/* Binary Code Rain Effect */
+.binary-rain {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent-blue);
+  opacity: 0.2;
+  animation: binaryFall 10s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes binaryFall {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.2;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Circuit Board Pattern */
+.circuit-board {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L30 10 L30 30 L50 30 M70 30 L70 10 L90 10 M10 90 L30 90 L30 70 L50 70 M70 70 L70 90 L90 90' stroke='%2300d4ff' stroke-width='0.5' fill='none' opacity='0.05'/%3E%3Ccircle cx='30' cy='30' r='3' fill='%2300d4ff' opacity='0.1'/%3E%3Ccircle cx='70' cy='70' r='3' fill='%23ff6b35' opacity='0.1'/%3E%3C/svg%3E");
+  animation: circuitPulse 4s ease-in-out infinite;
+}
+
+@keyframes circuitPulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Data Flow Lines */
+.data-flow-line {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+  animation: dataFlow 8s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes dataFlow {
+  0% {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+}
+
+/* Hexagon Grid Pattern */
+.hexagon-grid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0 L60 15 L60 45 L30 60 L0 45 L0 15 Z' fill='none' stroke='%2300d4ff' stroke-width='0.5' opacity='0.03'/%3E%3C/svg%3E");
+  animation: hexPulse 6s ease-in-out infinite;
+}
+
+@keyframes hexPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.02);
+  }
+}
+
+/* Scanning Effect */
+.scan-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+  box-shadow: 0 0 10px var(--accent-blue);
+  animation: scanMove 4s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+@keyframes scanMove {
+  0%, 100% {
+    top: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .gradient-orb {
+    filter: blur(60px);
+  }
+  
+  .gradient-orb.blue {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .gradient-orb.orange {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .gradient-orb.green {
+    width: 200px;
+    height: 200px;
+  }
+}
