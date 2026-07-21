@@ -1,0 +1,27 @@
+# Voltronix Automation frontend update - TODO
+
+- [x] Update `public/index.html`:
+  - [ ] Add Google Fonts: Barlow Condensed + Inter
+  - [ ] Add Tabler Icons CDN
+  - [ ] Update meta description + `theme-color` to `#080d1a`
+- [ ] Update page structure + navigation:
+  - [ ] Update `src/App.js` to render required sections: Hero, Services, Why Us, Projects, Contact (keep existing style/animations)
+  - [ ] Update `src/components/Navigation.js` links to Home/Services/Why Us/Projects/Contact
+- [ ] Update content sections (keep existing visual style):
+  - [ ] `src/components/HeroSection.js`: Voltronix headline/subheadline, CTA buttons, animated stat bar (IEC/DEWA/UAE Engineers/Panel Types)
+  - [ ] `src/components/ServicesSection.js`: 6 service cards (PLC/VFD/MCC/BMS/Safety & ESD/Other) with Tabler icons + 2-line descriptions
+  - [ ] Create `src/components/WhyUsSection.js`: 4 pillars
+  - [ ] Update `src/components/ProjectsSection.js`: 3 UAE project cards (believable)
+  - [ ] Create `src/components/ContactSection.js`: WhatsApp + phone/email + manual contact form
+- [ ] Add Google Sheets webhook utilities (placeholder URLs preserved):
+  - [ ] Create `src/chatbot/submitForm.js` with `APPS_SCRIPT_URL='YOUR_APPS_SCRIPT_URL'` and silent fail POST
+- [ ] Add AI Chatbot:
+  - [ ] Create `src/chatbot/useChatbot.js`
+  - [ ] Create `src/chatbot/ChatbotProvider.js` (state + open triggers: 25s OR 40% scroll height)
+  - [ ] Create `src/chatbot/ChatbotWidget.js` with 5-step flow + quick-reply chips + ref generation VX-XXXX
+  - [ ] Create `src/chatbot/FallbackBanner.js` (shown if not completed after 60s; dismissible)
+- [ ] Wire chatbot into app:
+  - [ ] Wrap `App` with `ChatbotProvider` and mount `ChatbotWidget` bottom-right
+  - [ ] Hero CTA “Get a Quote” opens chatbot
+- [ ] Update `src/components/Footer.js` to match Voltronix spec (logo + nav links + copyright)
+- [ ] Run `npm test` / `npm run build` / `npm run start` (as applicable) to verify build passes

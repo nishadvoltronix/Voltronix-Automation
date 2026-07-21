@@ -102,13 +102,14 @@
 /* Service Card */
 .service-card {
   position: relative;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  background: rgba(173, 216, 230, 0.22); /* light blue rectangle */
+  border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 16px;
   padding: 2rem;
   overflow: hidden;
   transition: all 0.4s ease;
   cursor: pointer;
+  color: #0b0b0b; /* black text */
 }
 
 .service-card::before {
@@ -173,13 +174,13 @@
 .service-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: #0b0b0b;
   margin-bottom: 1rem;
 }
 
 .service-description {
   font-size: 0.95rem;
-  color: var(--text-secondary);
+  color: #0b0b0b;
   line-height: 1.7;
   margin-bottom: 1.5rem;
 }
@@ -195,9 +196,10 @@
   padding: 0.4rem 0.8rem;
   border-radius: 50px;
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 600;
   border: 1px solid;
   transition: all 0.3s ease;
+  color: #0b0b0b;
 }
 
 .feature-tag:hover {
@@ -289,10 +291,11 @@
   align-items: flex-start;
   gap: 1.25rem;
   padding: 1.5rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  background: rgba(173, 216, 230, 0.16); /* light blue rectangle */
+  border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 12px;
   transition: all 0.3s ease;
+  color: #0b0b0b;
 }
 
 .info-card:hover {
@@ -314,13 +317,13 @@
 .info-content h4 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: #0b0b0b;
   margin-bottom: 0.5rem;
 }
 
 .info-content p {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: #0b0b0b;
   line-height: 1.6;
 }
 

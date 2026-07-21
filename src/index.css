@@ -1,20 +1,27 @@
 /* Global Styles - Futuristic Industrial Theme */
 :root {
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #111118;
-  --bg-tertiary: #1a1a24;
-  --bg-card: #151520;
+  /* Switch to white base like original Voltronix look */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f6f8ff;
+  --bg-tertiary: #eef2ff;
+  --bg-card: #ffffff;
+
+  /* Keep brand accents for colored “banners”/glows */
   --accent-blue: #00d4ff;
-  --accent-blue-glow: rgba(0, 212, 255, 0.3);
+  --accent-blue-glow: rgba(0, 212, 255, 0.28);
   --accent-orange: #ff6b35;
-  --accent-orange-glow: rgba(255, 107, 53, 0.3);
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0b0;
-  --text-muted: #6a6a7a;
-  --border-color: #2a2a3a;
-  --success: #00ff88;
-  --warning: #ffaa00;
-  --error: #ff4444;
+  --accent-orange-glow: rgba(255, 107, 53, 0.25);
+
+  /* Text colors for light background */
+  --text-primary: #07111f;
+  --text-secondary: #445063;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+
+  --success: #0bbf7a;
+  --warning: #f59e0b;
+  --error: #ef4444;
+
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
@@ -48,13 +55,13 @@ body::before {
   height: 100%;
   pointer-events: none;
   z-index: -2;
-  background: 
-    /* Animated gradient orbs */
-    radial-gradient(ellipse at 20% 30%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 70%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(0, 212, 255, 0.05) 0%, transparent 70%),
-    /* Base dark gradient */
-    linear-gradient(135deg, #0a0a0f 0%, #111118 50%, #0a0a0f 100%);
+  background:
+    /* Brand orb accents */
+    radial-gradient(ellipse at 20% 30%, rgba(0, 212, 255, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(255, 107, 53, 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(0, 212, 255, 0.06) 0%, transparent 70%),
+    /* White base */
+    linear-gradient(135deg, #ffffff 0%, #f6f8ff 50%, #ffffff 100%);
   animation: backgroundPulse 8s ease-in-out infinite;
 }
 
@@ -68,30 +75,30 @@ body::after {
   height: 100%;
   pointer-events: none;
   z-index: -2;
-  background-image: 
+  background-image:
     /* Horizontal lines */
     repeating-linear-gradient(
       0deg,
       transparent,
       transparent 50px,
-      rgba(0, 212, 255, 0.03) 50px,
-      rgba(0, 212, 255, 0.03) 51px
+      rgba(0, 212, 255, 0.05) 50px,
+      rgba(0, 212, 255, 0.05) 51px
     ),
     /* Vertical lines */
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 50px,
-      rgba(0, 212, 255, 0.03) 50px,
-      rgba(0, 212, 255, 0.03) 51px
+      rgba(0, 212, 255, 0.05) 50px,
+      rgba(0, 212, 255, 0.05) 51px
     ),
     /* Diagonal circuit lines */
     repeating-linear-gradient(
       45deg,
       transparent,
       transparent 100px,
-      rgba(255, 107, 53, 0.02) 100px,
-      rgba(255, 107, 53, 0.02) 101px
+      rgba(255, 107, 53, 0.03) 100px,
+      rgba(255, 107, 53, 0.03) 101px
     );
   animation: gridMove 20s linear infinite;
 }

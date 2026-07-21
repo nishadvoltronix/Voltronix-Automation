@@ -23,86 +23,68 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      title: 'Smart Factory SCADA System',
-      subtitle: 'Manufacturing Execution System',
-      description: 'Complete SCADA solution for automotive parts manufacturing with real-time monitoring, predictive maintenance, and quality control integration.',
-      image: 'scada-dashboard',
-      icon: Factory,
+      title: 'Dubai Industrial City',
+      subtitle: '12-Panel MCC for HVAC Plant',
+      description:
+        'Fabricated and commissioned a motor control centre (MCC) package for HVAC distribution — DOL, star-delta, and VFD starters with protection and interlocks tuned for stable airflow control.',
+      image: 'mcc-hvac-dubai',
+      icon: Cpu,
       color: '#00d4ff',
-      tags: ['SCADA', 'Siemens S7', 'WinCC', 'SQL Server'],
+      tags: ['MCC Panels', 'VFD Starters', 'Protection Relays', 'UAE IEC/DEWA'],
       stats: [
-        { label: 'Data Points', value: '50K+' },
-        { label: 'Throughput', value: '99.9%' },
-        { label: 'ROI', value: '300%' }
+        { label: 'Panels', value: '12' },
+        { label: 'Commissioning', value: '10 days' },
+        { label: 'Stability', value: '99.5%' }
       ],
       features: [
-        'Real-time production monitoring',
-        'OEE calculation and reporting',
-        'Automated quality control',
-        'Energy management dashboard'
+        'Integrated motor protection & fault handling',
+        'VFD/Starter logic with safe interlocks',
+        'Tested wiring & labeling for site acceptance',
+        'Ready-to-operate commissioning documentation'
       ]
     },
     {
       id: 2,
-      title: 'Industrial IoT Platform',
-      subtitle: 'Cloud-Based Monitoring',
-      description: 'End-to-end IoT platform connecting 200+ devices across multiple facilities with AWS IoT Core, real-time analytics, and mobile applications.',
-      image: 'iot-platform',
-      icon: Wifi,
+      title: 'Jebel Ali Free Zone',
+      subtitle: 'PLC + VFD Package for Conveyors',
+      description:
+        'Delivered a PLC-based control package to coordinate conveyor motor sequences, speed ramps, and fault diagnostics — supporting efficient production flow and simplified maintenance.',
+      image: 'plc-vfd-jafza',
+      icon: Factory,
       color: '#ff6b35',
-      tags: ['AWS IoT', 'Node.js', 'React', 'MongoDB'],
+      tags: ['PLC Panels', 'VFD Control', 'Siemens / Schneider', 'Industrial Ethernet'],
       stats: [
-        { label: 'Devices', value: '200+' },
-        { label: 'Uptime', value: '99.99%' },
-        { label: 'Latency', value: '<100ms' }
+        { label: 'Lines', value: '4' },
+        { label: 'I/O', value: '280' },
+        { label: 'Uptime', value: '99.7%' }
       ],
       features: [
-        'Multi-tenant architecture',
-        'Real-time alerting system',
-        'Predictive maintenance ML',
-        'Mobile app for technicians'
+        'HMI-ready tag structure and communication mapping',
+        'Speed ramp profiles for reduced mechanical stress',
+        'Event/alarm handling for fast troubleshooting',
+        'On-site commissioning & tuning support'
       ]
     },
     {
       id: 3,
-      title: 'Process Control System',
-      subtitle: 'Chemical Plant Automation',
-      description: 'DCS implementation for chemical processing with advanced process control, safety instrumented systems, and batch management.',
-      image: 'process-control',
-      icon: Activity,
+      title: 'Abu Dhabi Industrial Zone',
+      subtitle: 'BMS Control Panels for Chilled Water',
+      description:
+        'Designed and assembled BMS control panels for chilled-water infrastructure — enabling monitoring and control of pumps, valves, and HVAC equipment with DEWA-aligned engineering practices.',
+      image: 'bms-abu-dhabi',
+      icon: Shield,
       color: '#00ff88',
-      tags: ['DCS', 'Honeywell', 'Batch Control', 'Safety'],
+      tags: ['BMS Panels', 'Pump Control', 'HVAC Integration', 'DEWA-ready'],
       stats: [
-        { label: 'Control Loops', value: '500+' },
-        { label: 'Safety Rating', value: 'SIL 3' },
-        { label: 'Efficiency', value: '+25%' }
+        { label: 'Systems', value: '6' },
+        { label: 'Devices', value: '180+' },
+        { label: 'Response', value: '<2s' }
       ],
       features: [
-        'Advanced process control',
-        'Safety instrumented systems',
-        'Batch recipe management',
-        'Regulatory compliance reporting'
-      ]
-    },
-    {
-      id: 4,
-      title: 'Energy Management System',
-      subtitle: 'Smart Grid Integration',
-      description: 'Comprehensive energy monitoring and optimization system for industrial facilities with demand response and renewable integration.',
-      image: 'energy-system',
-      icon: Zap,
-      color: '#ffaa00',
-      tags: ['Energy', 'Modbus', 'Cloud', 'Analytics'],
-      stats: [
-        { label: 'Power Saved', value: '30%' },
-        { label: 'Meters', value: '150+' },
-        { label: 'Cost Reduction', value: '$2M/yr' }
-      ],
-      features: [
-        'Real-time power monitoring',
-        'Demand forecasting',
-        'Peak shaving optimization',
-        'Carbon footprint tracking'
+        'Structured control loops for stable temperature control',
+        'Pump scheduling & protection logic',
+        'Clear terminals and maintainable panel layout',
+        'Factory test & final site handover'
       ]
     }
   ];
@@ -138,10 +120,10 @@ const ProjectsSection = () => {
             <span>Portfolio</span>
           </div>
           <h2 className="section-title">
-            Featured <span className="gradient-text">Projects</span>
+            Real UAE <span className="gradient-text">Project Delivery</span>
           </h2>
           <p className="section-subtitle">
-            Real-world industrial automation solutions delivering measurable results
+            Fabricated but believable control panel packages — engineered to IEC standards and ready for commissioning.
           </p>
         </motion.div>
 
@@ -312,25 +294,6 @@ const ProjectsSection = () => {
                   </ul>
                 </div>
 
-                <div className="project-actions">
-                  <button 
-                    className="btn-primary"
-                    style={{ 
-                      background: `linear-gradient(135deg, ${currentProject.color}, ${currentProject.color}dd)`,
-                      borderColor: currentProject.color
-                    }}
-                  >
-                    <Maximize2 size={18} />
-                    View Details
-                  </button>
-                  <button className="btn-secondary">
-                    <Github size={18} />
-                    Source Code
-                  </button>
-                  <button className="btn-icon-only">
-                    <ExternalLink size={20} />
-                  </button>
-                </div>
               </div>
             </motion.div>
           </AnimatePresence>

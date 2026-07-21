@@ -11,9 +11,9 @@
 }
 
 .navigation.scrolled {
-  background: rgba(10, 10, 15, 0.95);
+  background: rgb(206, 19, 13); /* red scrolled tab/background */
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   padding: 0.75rem 0;
 }
 
@@ -33,10 +33,25 @@
   cursor: pointer;
 }
 
+.nav-logo-image {
+  height: 64px;
+  width: auto;
+  display: block;
+}
+
+.nav-logo-text {
+  font-size: 2rem;
+  font-weight:900;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin-left: -0.8rem;
+ 
+}
+
 .logo-icon {
   width: 32px;
   height: 32px;
-  color: var(--accent-blue);
+  color: #0b0b0b;
   animation: rotate 10s linear infinite;
 }
 
@@ -48,8 +63,8 @@
 }
 
 .logo-highlight {
-  color: var(--accent-blue);
-  text-shadow: 0 0 20px var(--accent-blue-glow);
+  color: #0b0b0b;
+  text-shadow: none;
 }
 
 .nav-links {
@@ -60,9 +75,9 @@
 
 .nav-link {
   background: none;
-  border: none;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
+  border:wheat;
+  color: #0b0b0b;
+  font-size: 1.25rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -82,7 +97,7 @@
 }
 
 .nav-link:hover {
-  color: var(--text-primary);
+  color: #0b0b0b;
 }
 
 .nav-link:hover::after {
@@ -125,7 +140,7 @@
 .mobile-nav-link {
   background: none;
   border: none;
-  color: var(--text-secondary);
+  color: #0b0b0b;
   font-size: 1rem;
   font-weight: 500;
   padding: 0.75rem 1rem;
@@ -137,7 +152,7 @@
 
 .mobile-nav-link:hover {
   background: var(--bg-tertiary);
-  color: var(--accent-blue);
+  color: #0b0b0b;
 }
 
 /* Responsive */

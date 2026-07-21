@@ -10,32 +10,77 @@ import {
   Shield
 } from 'lucide-react';
 import './ServicesSection.css';
+import { useNavigate } from 'react-router-dom';
 
 const ServicesSection = () => {
+  const navigate = useNavigate();
+
   const services = [
     {
+      slug: 'plc-panels',
       icon: Cpu,
-      title: 'Industrial Automation',
-      description: 'Design and implementation of complete automation systems including PLC programming, HMI development, SCADA integration, and control system architecture for manufacturing and process industries.',
-      features: ['PLC Programming', 'HMI/SCADA Design', 'Control Systems', 'Process Automation'],
+      title: 'PLC Panels',
+      description:
+        'Custom-built PLC control panels for machine control and process automation.\n'
+        + 'Siemens / Allen-Bradley / Schneider programming with HMI integration.',
+      features: ['PLC Programming', 'HMI Integration', 'Comms & IO', 'Testing'],
       color: '#00d4ff',
       gradient: 'linear-gradient(135deg, #00d4ff 0%, #0099cc 100%)'
     },
     {
+      slug: 'vfd-control-panels',
       icon: Code2,
-      title: 'Industrial Software Development',
-      description: 'Custom software solutions for industrial environments including manufacturing execution systems (MES), data historians, reporting tools, and enterprise integration platforms.',
-      features: ['MES Systems', 'Data Historians', 'Custom Applications', 'Database Design'],
+      title: 'VFD Control Panels',
+      description:
+        'VFD panels designed to control motor speed and improve energy efficiency.\n'
+        + 'Reliable acceleration, protection and tuned process performance.',
+      features: ['VFD Configuration', 'Motor Protection', 'Ramp & Control', 'Commissioning'],
       color: '#ff6b35',
       gradient: 'linear-gradient(135deg, #ff6b35 0%, #cc5500 100%)'
     },
     {
-      icon: Wifi,
-      title: 'Industrial IoT Systems',
-      description: 'End-to-end Industrial IoT solutions connecting machines to the cloud. Real-time monitoring, predictive maintenance, and digital twin implementations for smart factories.',
-      features: ['IoT Gateways', 'Cloud Integration', 'Predictive Analytics', 'Digital Twins'],
-      color: '#00ff88',
-      gradient: 'linear-gradient(135deg, #00ff88 0%, #00cc6a 100%)'
+      slug: 'mcc-assemblies',
+      icon: Settings,
+      title: 'MCC Assemblies',
+      description:
+        'Motor Control Centre (MCC) panels for safe control of multiple motors.\n'
+        + 'DOL / Star-Delta / Soft Starter / VFD solutions for plants and HVAC.',
+      features: ['Safe Motor Control', 'Starter Options', 'Protection Relays', 'Build Quality'],
+      color: '#ff4d6d',
+      gradient: 'linear-gradient(135deg, #ff4d6d 0%, #c93452 100%)'
+    },
+    {
+      slug: 'bms-control-panels',
+      icon: Shield,
+      title: 'BMS Control Panels',
+      description:
+        'Building Management System (BMS) panels for monitoring and automation.\n'
+        + 'HVAC, pumps, fans, lighting and building services integration.',
+      features: ['Building Services', 'Monitoring & Control', 'Integration', 'DEWA Readiness'],
+      color: '#ffaa00',
+      gradient: 'linear-gradient(135deg, #ffaa00 0%, #cc8400 100%)'
+    },
+    {
+      slug: 'safety-esd-panel',
+      icon: Cpu,
+      title: 'Safety & ESD Panel',
+      description:
+        'Safety and ESD control panels engineered for dependable protection.\n'
+        + 'Clear wiring practices, robust components and thorough commissioning.',
+      features: ['Safety Interlocks', 'ESD Logic', 'Wiring & Terminations', 'Verification'],
+      color: '#ff4d6d',
+      gradient: 'linear-gradient(135deg, #ff4d6d 0%, #c93452 100%)'
+    },
+    {
+      slug: 'other-control-panels',
+      icon: Code2,
+      title: 'Other Control Panels',
+      description:
+        'Tailored control panel engineering for special requirements and custom builds.\n'
+        + 'From concept to commissioning — designed to your IEC-ready process.',
+      features: ['Custom Design', 'Panel Build', 'Testing', 'Site Support'],
+      color: '#7c5cff',
+      gradient: 'linear-gradient(135deg, #7c5cff 0%, #5536d9 100%)'
     }
   ];
 
@@ -61,6 +106,10 @@ const ServicesSection = () => {
     }
   };
 
+  const goToService = (slug) => {
+    navigate(`/services/${slug}`);
+  };
+
   return (
     <section id="services" className="services-section">
       <div className="services-bg">
@@ -79,13 +128,13 @@ const ServicesSection = () => {
         >
           <div className="section-badge">
             <Settings className="badge-icon" />
-            <span>What I Do</span>
+            <span>Voltronix Solutions</span>
           </div>
           <h2 className="section-title">
-            Professional <span className="gradient-text">Services</span>
+            Control Panel <span className="gradient-text">Solutions</span>
           </h2>
           <p className="section-subtitle">
-            Comprehensive industrial automation solutions tailored to your specific needs
+            From concept to commissioning — engineered to IEC standards, DEWA-compliant, and ready for your process.
           </p>
         </motion.div>
 
@@ -102,6 +151,13 @@ const ServicesSection = () => {
               className="service-card"
               variants={itemVariants}
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
+              role="button"
+              tabIndex={0}
+              aria-label={`Open ${service.title} page`}
+              onClick={() => goToService(service.slug)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') goToService(service.slug);
+              }}
             >
               <div className="service-glow" style={{ background: service.gradient }}></div>
               
@@ -132,7 +188,14 @@ const ServicesSection = () => {
                   ))}
                 </div>
 
-                <button className="service-cta">
+                <button
+                  className="service-cta"
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goToService(service.slug);
+                  }}
+                >
                   <span>Learn More</span>
                   <ArrowRight className="cta-icon" />
                 </button>

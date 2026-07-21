@@ -1,3 +1,12 @@
+/* Hide old React VX bot UI (keep fallback banner) */
+.vx-bot-fab {
+  display: none !important;
+}
+
+.vx-bot-panel {
+  display: none !important;
+}
+
 /* App Layout Styles */
 .App {
   min-height: 100vh;
@@ -47,9 +56,86 @@ section {
   transform: translateY(0);
 }
 
+/* Floating WhatsApp symbol (bottom-left) */
+.vx-wa-symbol {
+  position: fixed;
+  left: 22px;
+  bottom: 22px;
+  z-index: 1001;
+  background-color: #25d366;
+
+  width:71px;
+  height: 71px;
+  border-radius: 22px;
+
+  /* Outer wrapper stays transparent so the inner circle is visible */
+  background: transparent;
+
+  display: grid;
+  place-items: center;
+
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+
+  /* used by inline svg via currentColor */
+  color: #ffffff;
+
+  overflow: hidden;
+}
+
+.vx-wa-symbol:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+  filter: brightness(1.03);
+}
+
+.vx-wa-inner {
+  position: absolute;
+  width: 100%;
+  stroke-width: ".2";
+
+  height: 100%;
+  background-color: #25d366; /* inner WhatsApp green */
+  border-radius:22px;
+  z-index: 0;
+}
+
+.vx-wa-phone-bg {
+  position: absolute;
+  width: 30%;
+  height: 30%;
+  left: 50%;
+  top: 56%;
+  transform: translate(-55%, -55%);
+  background-color: #ffffff;
+  z-index:2;
+}
+
+.vx-wa-symbol svg {
+  position: relative;
+  z-index: 2;
+  display: block;
+  color: #ffffff; /* outline */
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .App {
     overflow-x: hidden;
+  }
+
+  .vx-wa-symbol {
+    left: 14px;
+    bottom: 14px;
+    width: 52px;
+    height: 52px;
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { 
   Cpu,
   Mail,
@@ -18,8 +19,16 @@ import './Footer.css';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const scrollToContact = () => {
+    const el = document.getElementById('contact');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const footerLinks = {
@@ -69,41 +78,32 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="brand-logo">
-              <Cpu className="logo-icon" />
-              <span className="logo-text">Auto<span className="logo-highlight">Mate</span></span>
+              <img src="/logo.png" alt="Voltronix Automation" className="footer-logo-image" />
+              <span className="footer-brand-text">Automation</span>
             </div>
             <p className="brand-description">
-              Professional Industrial Automation Engineer specializing in building 
-              cutting-edge industrial applications and smart factory systems.
+              From concept to commissioning — engineered to IEC standards, DEWA-compliant, and ready for your process.
             </p>
-            
+
             <div className="contact-info">
               <div className="contact-item">
                 <Mail className="contact-icon" />
-                <span>prosaeed359@gmail.com</span>
+                <span>info@voltronix.ae</span>
               </div>
               <div className="contact-item">
                 <Phone className="contact-icon" />
-                <span>+977 504327804</span>
+                <span>+971504327804</span>
               </div>
               <div className="contact-item">
                 <MapPin className="contact-icon" />
-                <span>Dip2 , Dubai , UAE </span>
+                <span> Shed 06, Aber Warehouse DIP 02,
+                   PO Box: 414345 , Dubai.
+                                       United Arab Emirates.
+                    </span>
               </div>
             </div>
 
-            <div className="social-links">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="social-link"
-                  aria-label={social.label}
-                >
-                  <social.icon size={20} />
-                </a>
-              ))}
-            </div>
+            
           </motion.div>
 
           {/* Links Sections */}
@@ -115,24 +115,38 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <div className="links-column">
-              <h4>Services</h4>
+              <h4>Navigation</h4>
               <ul>
-                {footerLinks.services.map((link) => (
-                  <li key={link.name}>
-                    <a href={link.href}>{link.name}</a>
-                  </li>
-                ))}
+                <li>
+                  <span>Home</span>
+                </li>
+                <li>
+                  <span>Services</span>
+                </li>
+                <li>
+                  <span>Why Us</span>
+                </li>
+                <li>
+                  <span>Projects</span>
+                </li>
+                <li>
+                  <span>Contact</span>
+                </li>
               </ul>
             </div>
 
             <div className="links-column">
-              <h4>Technologies</h4>
+              <h4>Focus</h4>
               <ul>
-                {footerLinks.technologies.map((link) => (
-                  <li key={link.name}>
-                    <a href={link.href}>{link.name}</a>
-                  </li>
-                ))}
+                <li>
+                  <span>Panel Types</span>
+                </li>
+                <li>
+                  <span>IEC • DEWA</span>
+                </li>
+                <li>
+                  <span>UAE Delivery</span>
+                </li>
               </ul>
             </div>
 
@@ -141,10 +155,7 @@ const Footer = () => {
               <ul>
                 {footerLinks.resources.map((link) => (
                   <li key={link.name}>
-                    <a href={link.href}>
-                      {link.name}
-                      {link.href === '#' && <ExternalLink size={12} />}
-                    </a>
+                    <span>{link.name}</span>
                   </li>
                 ))}
               </ul>
@@ -161,7 +172,20 @@ const Footer = () => {
           >
             <h3>Let's Work Together</h3>
             <p>Have a project in mind? Let's discuss how I can help automate your industrial processes.</p>
-            <button className="cta-button">
+            <button
+              className="cta-button"
+              type="button"
+              onClick={() => {
+                // On service detail routes, ContactSection isn't mounted, so navigate home first.
+                if (location.pathname !== '/') {
+                  navigate('/');
+                  setTimeout(() => scrollToContact(), 60);
+                  setTimeout(() => scrollToContact(), 180);
+                  return;
+                }
+                scrollToContact();
+              }}
+            >
               <Code2 size={18} />
               Start a Project
             </button>
@@ -177,10 +201,10 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="bottom-content">
             <p className="copyright">
-              © {currentYear} Industrial Automation Engineer. All rights reserved.
+              © {currentYear} Voltronix Automation. All rights reserved.
             </p>
             <p className="made-with">
-              Made with <Heart className="heart-icon" size={14} /> using React & Industrial IoT
+              Engineered for UAE industry • IEC-ready
             </p>
           </div>
           
