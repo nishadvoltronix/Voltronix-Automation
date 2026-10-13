@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { ChatbotContext } from './ChatbotProvider';
 
 export function useChatbot() {

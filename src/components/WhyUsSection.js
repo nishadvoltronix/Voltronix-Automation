@@ -1,82 +1,21 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { CheckCircle2, Wrench, RefreshCw, Building2 } from 'lucide-react';
+import { CheckCircle2, Headphones, MapPin, ShieldCheck, Users, Wrench } from 'lucide-react';
 import './WhyUsSection.css';
 
-const WhyUsSection = () => {
-  const pillars = [
-    {
-      icon: CheckCircle2,
-      title: 'Customized Engineering',
-      description: 'Every panel is designed according to the exact operational and technical requirements of your project.'
-    },
-    {
-      icon: Wrench,
-      title: 'Quality Components',
-      description: 'We use reliable components from trusted international brands based on your technical needs and budget.'
-    },
-    {
-      icon: RefreshCw,
-      title: 'Complete Solutions',
-      description: 'From design and programming to manufacturing, installation, testing, and commissioning—handled end-to-end.'
-    },
-    {
-      icon: Building2,
-      title: 'Reliable Support',
-      description: 'Technical support, troubleshooting, maintenance, and system upgrades whenever required.'
-    }
-  ];
+const strengths = [
+  [Users, 'Practical engineering', 'Solutions shaped around the operating and technical needs of each project.'],
+  [ShieldCheck, 'Quality-led build', 'Clear wiring practices, dependable components and disciplined verification.'],
+  [Wrench, 'End-to-end delivery', 'Design, programming, manufacturing, installation, testing and commissioning.'],
+  [MapPin, 'Local UAE support', 'Dubai-based coordination and responsive support across the UAE.'],
+  [CheckCircle2, 'Clear handover', 'Structured testing and documentation prepared for practical site use.'],
+  [Headphones, 'Ongoing support', 'Troubleshooting, maintenance and system-upgrade support when required.']
+];
 
+export default function WhyUsSection() {
   return (
-    <section id="why-us" className="whyus-section">
-      <div className="whyus-bg">
-        <div className="whyus-grid" />
-        <div className="whyus-orb orb-1" />
-        <div className="whyus-orb orb-2" />
-      </div>
-
-      <div className="whyus-container">
-        <motion.div
-          className="section-header"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="section-badge">
-            <span className="badge-dot" />
-            <span>Why Voltronix</span>
-          </div>
-          <h2 className="section-title">
-            Why Choose <span className="gradient-text">Voltronix Automation</span>
-          </h2>
-          <p className="section-subtitle">
-            Engineered Control. Built for UAE Industry. From concept to commissioning — designed for safety, performance, and fast delivery.
-          </p>
-        </motion.div>
-
-        <div className="whyus-pills">
-          {pillars.map((p) => (
-            <motion.div
-              key={p.title}
-              className="whyus-card"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ y: -6 }}
-            >
-              <div className="whyus-icon-wrap">
-                <p.icon className="whyus-icon" />
-              </div>
-              <h3 className="whyus-title">{p.title}</h3>
-              <p className="whyus-desc">{p.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <section id="why-us" className="whyus-section"><div className="container whyus-layout">
+      <div className="whyus-copy"><span className="eyebrow">Why Voltronix</span><h2>Built on quality.<br/>Driven by <span>your operation.</span></h2><p>We combine control-panel expertise, automation know-how and local project support to deliver systems designed for dependable real-world performance.</p><a className="btn-primary" href="#contact">Get in touch</a></div>
+      <div className="whyus-grid">{strengths.map(([Icon, title, text]) => <div className="whyus-item" key={title}><Icon/><div><h3>{title}</h3><p>{text}</p></div></div>)}</div>
+    </div></section>
   );
-};
-
-export default WhyUsSection;
+}

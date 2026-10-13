@@ -1,141 +1,29 @@
-/* Hide old React VX bot UI (keep fallback banner) */
-.vx-bot-fab {
-  display: none !important;
+.App { min-height: 100vh; background: #fff; }
+main { overflow: clip; }
+.vx-bot-fab, .vx-bot-panel { display: none !important; }
+.vx-wa-symbol { position: fixed; right: 20px; bottom: 20px; z-index: 900; width: 55px; height: 55px; border-radius: 50%; display: grid; place-items: center; color: #fff; background: #25d366; border: 3px solid #fff; box-shadow: 0 12px 32px rgba(17,24,39,.2); transition: transform .2s ease; }
+.vx-wa-symbol:hover { transform: translateY(-3px); }
+.vx-wa-inner, .vx-wa-phone-bg { display: none; }
+.vx-wa-symbol svg { width: 37px; height: 37px; position: relative; }
+
+/* Viewport motion is progressive: content stays visible if JavaScript is unavailable. */
+.vx-reveal { opacity: 0; translate: 0 28px; transition: opacity .72s cubic-bezier(.2,.7,.2,1), translate .72s cubic-bezier(.2,.7,.2,1), scale .72s cubic-bezier(.2,.7,.2,1), transform .25s ease, box-shadow .25s ease, border-color .25s ease, color .2s ease, background .2s ease; transition-delay: var(--vx-delay, 0ms); will-change: opacity, translate; }
+.vx-reveal-left { translate: -34px 0; }
+.vx-reveal-right { translate: 34px 0; }
+.vx-reveal-card { translate: 0 24px; scale: .985; }
+.vx-reveal-image { opacity: .35; translate: none; scale: 1.035; transition-duration: .95s; }
+.vx-reveal.vx-in-view { opacity: 1; translate: none; scale: 1; }
+
+.btn-primary svg, .btn-secondary svg, .projects-link svg, .services-enquire svg { transition: transform .22s ease; }
+.btn-primary:hover svg, .btn-secondary:hover svg, .projects-link:hover svg, .services-enquire:hover svg { transform: translateX(4px); }
+.btn-primary:active, .btn-secondary:active { transform: translateY(0) scale(.98); }
+.vx-wa-symbol::before { content: ''; position: absolute; inset: -6px; border: 2px solid rgba(37,211,102,.38); border-radius: inherit; animation: vx-whatsapp-pulse 2.4s ease-out infinite; }
+
+@keyframes vx-whatsapp-pulse {
+  0%, 35% { opacity: 0; transform: scale(.88); }
+  48% { opacity: 1; }
+  82%, 100% { opacity: 0; transform: scale(1.28); }
 }
 
-.vx-bot-panel {
-  display: none !important;
-}
-
-/* App Layout Styles */
-.App {
-  min-height: 100vh;
-  background: var(--bg-primary);
-  position: relative;
-}
-
-.App::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(ellipse at 20% 20%, rgba(0, 212, 255, 0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(255, 107, 53, 0.03) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: -1;
-}
-
-main {
-  position: relative;
-  z-index: 1;
-}
-
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Section transitions */
-section {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-/* Animation classes */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Floating WhatsApp symbol (bottom-left) */
-.vx-wa-symbol {
-  position: fixed;
-  left: 22px;
-  bottom: 22px;
-  z-index: 1001;
-  background-color: #25d366;
-
-  width:71px;
-  height: 71px;
-  border-radius: 22px;
-
-  /* Outer wrapper stays transparent so the inner circle is visible */
-  background: transparent;
-
-  display: grid;
-  place-items: center;
-
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-  border: 2px solid rgba(255, 255, 255, 0.95);
-
-  text-decoration: none;
-  cursor: pointer;
-
-  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-
-  /* used by inline svg via currentColor */
-  color: #ffffff;
-
-  overflow: hidden;
-}
-
-.vx-wa-symbol:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
-  filter: brightness(1.03);
-}
-
-.vx-wa-inner {
-  position: absolute;
-  width: 100%;
-  stroke-width: ".2";
-
-  height: 100%;
-  background-color: #25d366; /* inner WhatsApp green */
-  border-radius:22px;
-  z-index: 0;
-}
-
-.vx-wa-phone-bg {
-  position: absolute;
-  width: 30%;
-  height: 30%;
-  left: 50%;
-  top: 56%;
-  transform: translate(-55%, -55%);
-  background-color: #ffffff;
-  z-index:2;
-}
-
-.vx-wa-symbol svg {
-  position: relative;
-  z-index: 2;
-  display: block;
-  color: #ffffff; /* outline */
-  width: 50px;
-  height: 50px;
-  background-color: transparent;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .App {
-    overflow-x: hidden;
-  }
-
-  .vx-wa-symbol {
-    left: 14px;
-    bottom: 14px;
-    width: 52px;
-    height: 52px;
-  }
-}
+@media (max-width: 600px) { .vx-wa-symbol { right: 14px; bottom: 14px; width: 50px; height: 50px; } }
+@media (prefers-reduced-motion: reduce) { .vx-reveal { opacity: 1; translate: none; scale: 1; will-change: auto; } .vx-wa-symbol::before { animation: none; } }

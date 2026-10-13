@@ -8,13 +8,13 @@ import ProjectsSection from './components/ProjectsSection';
 import Footer from './components/Footer';
 import WhyUsSection from './components/WhyUsSection';
 import ContactSection from './components/ContactSection';
-
-import { ChatbotProvider } from './chatbot/ChatbotProvider';
-import ChatbotWidget from './chatbot/ChatbotWidget';
+import HomeSections from './components/HomeSections';
 
 import ServiceDetailPage from './pages/ServiceDetailPage';
+import IndustryDetailPage from './pages/IndustryDetailPage';
 
 import SalesIqWidget from './components/SalesIqWidget';
+import MotionEffects from './components/MotionEffects';
 
 import './App.css';
 
@@ -30,10 +30,10 @@ function ScrollToTopOnRouteChange() {
 
 function App() {
   return (
-    <ChatbotProvider>
       <div className="App">
         <Navigation />
         <ScrollToTopOnRouteChange />
+        <MotionEffects />
 
         <Routes>
           <Route
@@ -42,23 +42,22 @@ function App() {
               <main>
                 <HeroSection />
                 <ServicesSection />
-                <WhyUsSection />
+                <HomeSections />
                 <ProjectsSection />
+                <WhyUsSection />
                 <ContactSection />
               </main>
             }
           />
 
           <Route path="/services/:slug" element={<ServiceDetailPage />} />
+          <Route path="/industries/:slug" element={<IndustryDetailPage />} />
         </Routes>
 
         <Footer />
 
         {/* Zoho SalesIQ bot */}
         <SalesIqWidget />
-
-        {/* Fallback banner stays via ChatbotWidget */}
-        <ChatbotWidget />
 
         <a
           className="vx-wa-symbol"
@@ -83,7 +82,6 @@ function App() {
           </svg>
         </a>
       </div>
-    </ChatbotProvider>
   );
 }
 
