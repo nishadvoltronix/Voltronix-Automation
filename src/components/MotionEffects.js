@@ -8,6 +8,11 @@ const motionGroups = [
     stagger: 70
   },
   {
+    selector: '.hero-capabilities > div',
+    className: 'vx-reveal vx-reveal-card',
+    stagger: 75
+  },
+  {
     selector: '.hero-image-wrap, .service-hero-image, .industry-hero-image',
     className: 'vx-reveal vx-reveal-image'
   },

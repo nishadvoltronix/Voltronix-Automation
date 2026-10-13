@@ -31,21 +31,20 @@
     <!-- Updated domain -->
     <link rel="canonical" href="https://voltronixautomation.ae/" />
 
-    <link
-      rel="alternate"
-      hreflang="en-AE"
-      href="https://voltronixautomation.ae/"
-    />
-
-    <link
-      rel="alternate"
-      hreflang="x-default"
-      href="https://voltronixautomation.ae/"
-    />
-
     <link rel="icon" type="image/png" href="%PUBLIC_URL%/logo2.png" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo2.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="preload" as="image" href="%PUBLIC_URL%/automation-control-room.jpg" imagesrcset="%PUBLIC_URL%/automation-control-room-mobile.jpg 900w, %PUBLIC_URL%/automation-control-room.jpg 1672w" imagesizes="(max-width: 980px) 100vw, 56vw" type="image/jpeg" fetchpriority="high" />
+    <link rel="preload" as="font" href="%PUBLIC_URL%/manrope.woff2" type="font/woff2" crossorigin />
+    <style>
+      @font-face {
+        font-family: 'Manrope';
+        src: url('%PUBLIC_URL%/manrope.woff2') format('woff2');
+        font-style: normal;
+        font-weight: 400 800;
+        font-display: swap;
+      }
+    </style>
 
     <!-- Social sharing -->
     <meta
@@ -71,7 +70,7 @@
     <!-- Updated domain -->
     <meta
       property="og:image"
-      content="https://voltronixautomation.ae/logo2.png"
+      content="https://voltronixautomation.ae/automation-control-room.jpg"
     />
 
     <meta
@@ -94,25 +93,7 @@
     <!-- Updated domain -->
     <meta
       name="twitter:image"
-      content="https://voltronixautomation.ae/logo2.png"
-    />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+      content="https://voltronixautomation.ae/automation-control-room.jpg"
     />
 
     <script type="application/ld+json">
@@ -126,10 +107,18 @@
             "url": "https://voltronixautomation.ae/",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://voltronixautomation.ae/logo2.png"
+              "url": "https://voltronixautomation.ae/logo.png"
             },
-            "image": "https://voltronixautomation.ae/logo2.png",
+            "image": "https://voltronixautomation.ae/automation-control-room.jpg",
             "description": "Voltronix Automation designs, manufactures, programs, tests and commissions industrial control panels in Dubai and across the UAE.",
+            "telephone": "+971504327804",
+            "email": "info@voltronix.ae",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Shed 06, Aber Warehouse, DIP 02",
+              "addressLocality": "Dubai",
+              "addressCountry": "AE"
+            },
             "areaServed": [
               {
                 "@type": "City",
@@ -195,20 +184,6 @@
             "url": "https://voltronixautomation.ae/",
             "name": "Voltronix Automation",
             "publisher": {
-              "@id": "https://voltronixautomation.ae/#organization"
-            },
-            "inLanguage": "en-AE"
-          },
-          {
-            "@type": "WebPage",
-            "@id": "https://voltronixautomation.ae/#webpage",
-            "url": "https://voltronixautomation.ae/",
-            "name": "Control Panel Manufacturer in Dubai, UAE | Voltronix Automation",
-            "description": "Voltronix Automation designs and manufactures PLC, VFD, MCC, BMS, ATS, pump and custom control panels in Dubai and across the UAE.",
-            "isPartOf": {
-              "@id": "https://voltronixautomation.ae/#website"
-            },
-            "about": {
               "@id": "https://voltronixautomation.ae/#organization"
             },
             "inLanguage": "en-AE"

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { ArrowRight, Check, ChevronRight, ClipboardCheck, DraftingCompass, Factory } from 'lucide-react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { services as serviceList } from '../components/ServicesSection';
 import './ServiceDetailPage.css';
 
@@ -60,8 +60,9 @@ const serviceSeo = {
 
 export default function ServiceDetailPage() {
   const { slug } = useParams(); const navigate = useNavigate();
-  const service = serviceData[slug] || serviceData['other-control-panels'];
-  const seo = serviceSeo[slug] || serviceSeo['other-control-panels'];
+  const canonicalSlug = serviceData[slug] ? slug : 'other-control-panels';
+  const service = serviceData[canonicalSlug];
+  const seo = serviceSeo[canonicalSlug];
   useEffect(() => {
     document.title = seo.title;
     const description = seo.description;
@@ -69,25 +70,33 @@ export default function ServiceDetailPage() {
     setMeta('meta[name="description"]', { name: 'description' }, description);
     setMeta('meta[property="og:title"]', { property: 'og:title' }, document.title);
     setMeta('meta[property="og:description"]', { property: 'og:description' }, description);
-    const pageUrl = `https://voltronixautomation.ae/services/${slug}`;
-    document.querySelector('meta[property="og:url"]')?.setAttribute('content', pageUrl);
+    const pageUrl = `https://voltronixautomation.ae/services/${canonicalSlug}`;
+    const imageUrl = `https://voltronixautomation.ae${service.image}`;
+    setMeta('meta[property="og:type"]', { property: 'og:type' }, 'website');
+    setMeta('meta[property="og:url"]', { property: 'og:url' }, pageUrl);
+    setMeta('meta[property="og:image"]', { property: 'og:image' }, imageUrl);
+    setMeta('meta[property="og:image:alt"]', { property: 'og:image:alt' }, `${service.title} by Voltronix Automation`);
+    setMeta('meta[name="twitter:title"]', { name: 'twitter:title' }, seo.title);
+    setMeta('meta[name="twitter:description"]', { name: 'twitter:description' }, description);
+    setMeta('meta[name="twitter:image"]', { name: 'twitter:image' }, imageUrl);
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', pageUrl);
     const schema = document.createElement('script');
     schema.id = 'service-structured-data'; schema.type = 'application/ld+json';
     schema.text = JSON.stringify({ '@context': 'https://schema.org', '@graph': [
-      { '@type': 'Service', name: service.title, serviceType: service.title, description, url: pageUrl, provider: { '@type': 'Organization', name: 'Voltronix Automation', url: 'https://voltronixautomation.ae/' }, areaServed: [{ '@type': 'City', name: 'Dubai' }, { '@type': 'Country', name: 'United Arab Emirates' }] },
+      { '@type': 'Service', name: service.title, serviceType: service.title, description, url: pageUrl, image: imageUrl, provider: { '@type': 'Organization', name: 'Voltronix Automation', url: 'https://voltronixautomation.ae/' }, areaServed: [{ '@type': 'City', name: 'Dubai' }, { '@type': 'Country', name: 'United Arab Emirates' }] },
       { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://voltronixautomation.ae/' }, { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://voltronixautomation.ae/#services' }, { '@type': 'ListItem', position: 3, name: service.title, item: pageUrl }] }
     ] });
     document.getElementById(schema.id)?.remove(); document.head.appendChild(schema);
     return () => schema.remove();
-  }, [service, seo, slug]);
+  }, [canonicalSlug, service, seo]);
   const goContact = () => { navigate('/'); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 80); };
+  if (slug !== canonicalSlug) return <Navigate to={`/services/${canonicalSlug}`} replace />;
   return <main className="service-detail-page">
-    <section className="service-hero"><div className="service-hero-image"><img src={service.image} alt={`${service.title} by Voltronix Automation`}/></div><div className="container service-hero-content"><div className="breadcrumbs"><Link to="/">Home</Link><ChevronRight/><Link to="/#services">Services</Link><ChevronRight/><span>{service.title}</span></div><span className="eyebrow">{service.eyebrow}</span><h1>{service.heading}</h1><p>{service.intro}</p><div className="service-actions"><button className="btn-primary" onClick={goContact}>Start a project <ArrowRight size={17}/></button><Link className="btn-secondary" to="/">Explore all services</Link></div></div></section>
+    <section className="service-hero"><div className="service-hero-image"><img src={service.image} alt={`${service.title} by Voltronix Automation`} decoding="async"/></div><div className="container service-hero-content"><div className="breadcrumbs"><Link to="/">Home</Link><ChevronRight/><Link to="/#services">Services</Link><ChevronRight/><span>{service.title}</span></div><span className="eyebrow">{service.eyebrow}</span><h1>{service.heading}</h1><p>{service.intro}</p><div className="service-actions"><button className="btn-primary" onClick={goContact}>Start a project <ArrowRight size={17}/></button><Link className="btn-secondary" to="/#services">Explore all services</Link></div></div></section>
     <section className="service-overview"><div className="container overview-grid"><div><span className="eyebrow">Service overview</span><h2>Engineered for clear operation and dependable handover.</h2><p>{service.intro}</p></div><div className="capability-card"><h3>Core capabilities</h3><ul>{service.bullets.map(item => <li key={item}><Check/>{item}</li>)}</ul></div></div></section>
     <section className="service-location-section"><div className="container service-location-grid"><div><span className="eyebrow">Dubai & UAE service</span><h2>{seo.heading}</h2><p>{seo.body}</p></div><div className="service-applications"><h3>Typical applications</h3><div>{seo.applications.map(item => <span key={item}><Check/>{item}</span>)}</div></div></div></section>
     <section className="delivery-section"><div className="container"><div className="section-heading-row"><div><span className="eyebrow">How we deliver</span><h2 className="section-heading">From design to <span>site support</span></h2></div></div><div className="delivery-grid"><div><DraftingCompass/><h3>Design & engineering</h3><p>Panel layouts, component selection and control design aligned to the project requirements.</p></div><div><Factory/><h3>Assembly & wiring</h3><p>Structured fabrication, cable routing, labeling and assembly quality checks.</p></div><div><ClipboardCheck/><h3>Testing & commissioning</h3><p>Functional verification, commissioning support and practical project handover.</p></div></div></div></section>
-    <section className="related-services"><div className="container"><span className="eyebrow">Related services</span><div className="related-grid">{serviceList.filter(item => item.slug !== slug).slice(0,3).map(item => <Link to={`/services/${item.slug}`} key={item.slug}><item.icon/><span>{item.title}</span><ArrowRight/></Link>)}</div></div></section>
+    <section className="related-services"><div className="container"><span className="eyebrow">Related services</span><h2>Explore more automation capabilities</h2><div className="related-grid">{serviceList.filter(item => item.slug !== slug).slice(0,3).map(item => <Link to={`/services/${item.slug}`} key={item.slug}><item.icon/><span>{item.title}</span><ArrowRight/></Link>)}</div></div></section>
     <section className="service-cta-band"><div className="container"><div><span>Have a control-panel requirement?</span><h2>Let’s discuss the right solution for your project.</h2></div><button className="btn-primary" onClick={goContact}>Request a quote <ArrowRight/></button></div></section>
   </main>;
 }

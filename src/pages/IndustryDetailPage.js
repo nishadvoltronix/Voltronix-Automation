@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { ArrowRight, Check, ChevronRight, Gauge, Settings, ShieldCheck } from 'lucide-react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { services } from '../components/ServicesSection';
 import './IndustryDetailPage.css';
 
@@ -26,7 +26,7 @@ const industryData = {
     related: ['bms-control-panels', 'vfd-control-panels', 'other-control-panels']
   },
   'industrial-facilities': {
-    title: 'Industrial Facilities', eyebrow: 'Industrial automation', image: '/automation-control-room.png',
+    title: 'Industrial Facilities', eyebrow: 'Industrial automation', image: '/automation-control-room.jpg',
     seoTitle: 'Industrial Automation Company Dubai, UAE | Voltronix',
     description: 'PLC, VFD, MCC and industrial control-panel engineering for factories, process facilities and industrial operations across Dubai and the UAE.',
     heading: 'Industrial automation engineered for visibility, control and uptime.',
@@ -70,7 +70,8 @@ const industryData = {
 export default function IndustryDetailPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const industry = industryData[slug] || industryData['industrial-facilities'];
+  const canonicalSlug = industryData[slug] ? slug : 'industrial-facilities';
+  const industry = industryData[canonicalSlug];
 
   useEffect(() => {
     document.title = industry.seoTitle;
@@ -79,28 +80,36 @@ export default function IndustryDetailPage() {
       if (!element) { element = document.createElement('meta'); Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value)); document.head.appendChild(element); }
       element.setAttribute('content', content);
     };
-    const pageUrl = `https://voltronixautomation.ae/industries/${slug}`;
+    const pageUrl = `https://voltronixautomation.ae/industries/${canonicalSlug}`;
+    const imageUrl = `https://voltronixautomation.ae${industry.image}`;
     setMeta('meta[name="description"]', { name: 'description' }, industry.description);
+    setMeta('meta[property="og:type"]', { property: 'og:type' }, 'website');
     setMeta('meta[property="og:title"]', { property: 'og:title' }, industry.seoTitle);
     setMeta('meta[property="og:description"]', { property: 'og:description' }, industry.description);
     setMeta('meta[property="og:url"]', { property: 'og:url' }, pageUrl);
+    setMeta('meta[property="og:image"]', { property: 'og:image' }, imageUrl);
+    setMeta('meta[property="og:image:alt"]', { property: 'og:image:alt' }, `${industry.title} automation solutions by Voltronix Automation`);
+    setMeta('meta[name="twitter:title"]', { name: 'twitter:title' }, industry.seoTitle);
+    setMeta('meta[name="twitter:description"]', { name: 'twitter:description' }, industry.description);
+    setMeta('meta[name="twitter:image"]', { name: 'twitter:image' }, imageUrl);
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', pageUrl);
 
     const schema = document.createElement('script');
     schema.id = 'industry-structured-data'; schema.type = 'application/ld+json';
     schema.text = JSON.stringify({ '@context': 'https://schema.org', '@graph': [
-      { '@type': 'Service', name: `${industry.title} Automation Solutions`, serviceType: industry.title, provider: { '@type': 'Organization', name: 'Voltronix Automation', url: 'https://voltronixautomation.ae/' }, areaServed: { '@type': 'Country', name: 'United Arab Emirates' }, description: industry.description, url: pageUrl },
+      { '@type': 'Service', name: `${industry.title} Automation Solutions`, serviceType: industry.title, provider: { '@type': 'Organization', name: 'Voltronix Automation', url: 'https://voltronixautomation.ae/' }, areaServed: { '@type': 'Country', name: 'United Arab Emirates' }, description: industry.description, url: pageUrl, image: imageUrl },
       { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: 'https://voltronixautomation.ae/' }, { '@type': 'ListItem', position: 2, name: 'Industries', item: 'https://voltronixautomation.ae/#industries' }, { '@type': 'ListItem', position: 3, name: industry.title, item: pageUrl }] }
     ] });
     document.getElementById(schema.id)?.remove(); document.head.appendChild(schema);
     return () => schema.remove();
-  }, [industry, slug]);
+  }, [canonicalSlug, industry]);
 
   const goContact = () => { navigate('/'); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 80); };
   const relatedServices = services.filter(service => industry.related.includes(service.slug));
+  if (slug !== canonicalSlug) return <Navigate to={`/industries/${canonicalSlug}`} replace />;
 
   return <main className="industry-page">
-    <section className="industry-hero"><div className="industry-hero-image"><img src={industry.image} alt={`${industry.title} automation and control-panel solutions in the UAE`}/></div><div className="container industry-hero-content"><div className="industry-breadcrumbs"><Link to="/">Home</Link><ChevronRight/><Link to="/#industries">Industries</Link><ChevronRight/><span>{industry.title}</span></div><span className="eyebrow">{industry.eyebrow}</span><h1>{industry.heading}</h1><p>{industry.intro}</p><button className="btn-primary" onClick={goContact}>Discuss your project <ArrowRight size={17}/></button></div></section>
+    <section className="industry-hero"><div className="industry-hero-image"><img src={industry.image} alt={`${industry.title} automation and control-panel solutions in the UAE`} decoding="async"/></div><div className="container industry-hero-content"><div className="industry-breadcrumbs"><Link to="/">Home</Link><ChevronRight/><Link to="/#industries">Industries</Link><ChevronRight/><span>{industry.title}</span></div><span className="eyebrow">{industry.eyebrow}</span><h1>{industry.heading}</h1><p>{industry.intro}</p><button className="btn-primary" onClick={goContact}>Discuss your project <ArrowRight size={17}/></button></div></section>
     <section className="industry-overview"><div className="container industry-overview-grid"><div><span className="eyebrow">Automation for {industry.title}</span><h2>Control solutions shaped around the facility and its operation.</h2><p>{industry.intro}</p></div><div className="industry-priorities">{industry.priorities.map((priority, index) => <div key={priority}>{index === 0 ? <Settings/> : index === 1 ? <Gauge/> : <ShieldCheck/>}<span>{priority}</span></div>)}</div></div></section>
     <section className="industry-applications"><div className="container"><span className="eyebrow">Typical applications</span><h2 className="section-heading">Where our solutions <span>fit</span></h2><div className="application-grid">{industry.applications.map(item => <div key={item}><Check/><span>{item}</span></div>)}</div></div></section>
     <section className="industry-related"><div className="container"><span className="eyebrow">Relevant services</span><h2 className="section-heading">Automation capabilities for <span>{industry.title}</span></h2><div className="industry-service-grid">{relatedServices.map(({ slug: serviceSlug, icon: Icon, title, description }) => <Link to={`/services/${serviceSlug}`} key={serviceSlug}><Icon/><div><h3>{title}</h3><p>{description}</p></div><ArrowRight/></Link>)}</div></div></section>

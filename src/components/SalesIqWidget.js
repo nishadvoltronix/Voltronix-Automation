@@ -4,23 +4,31 @@ export default function SalesIqWidget() {
   useEffect(() => {
     if (typeof document === 'undefined') return;
 
-    // Prevent duplicate loader
-    if (document.getElementById('zsiqscript')) return;
+    const events = ['pointerdown', 'touchstart', 'keydown'];
+    const loadWidget = () => {
+      events.forEach(event => window.removeEventListener(event, loadWidget));
 
-    const inline = document.createElement('script');
-    inline.type = 'text/javascript';
-    inline.text =
-      "window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}};";
+      // Prevent duplicate loader and defer third-party cookies until a visitor interacts.
+      if (document.getElementById('zsiqscript')) return;
 
-    const external = document.createElement('script');
-    external.id = 'zsiqscript';
-    external.type = 'text/javascript';
-    external.src =
-      'https://salesiq.zohopublic.com/widget?wc=siq6c7caf10ab5558239b53ad29eb5d9801ab28f7cdd7b035124a54dee0b79f78f5e53880139d0b43526df2e43b1a0a42e3';
-    external.defer = true;
+      const inline = document.createElement('script');
+      inline.type = 'text/javascript';
+      inline.text =
+        "window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}};";
 
-    document.body.appendChild(inline);
-    document.body.appendChild(external);
+      const external = document.createElement('script');
+      external.id = 'zsiqscript';
+      external.type = 'text/javascript';
+      external.src =
+        'https://salesiq.zohopublic.com/widget?wc=siq6c7caf10ab5558239b53ad29eb5d9801ab28f7cdd7b035124a54dee0b79f78f5e53880139d0b43526df2e43b1a0a42e3';
+      external.async = true;
+
+      document.body.appendChild(inline);
+      document.body.appendChild(external);
+    };
+
+    events.forEach(event => window.addEventListener(event, loadWidget, { once: true, passive: true }));
+    return () => events.forEach(event => window.removeEventListener(event, loadWidget));
   }, []);
 
   return null;

@@ -18,7 +18,7 @@
 .footer-group-links a { border-left: 1px solid #d8dde5; text-decoration: none; transition: color .2s, background .2s; }
 .footer-group-links a:hover { color: var(--red); }
 .footer-group-links a.active { margin-left: 2px; padding-inline: 10px; color: #fff; background: var(--red); border-left: 0; font-weight: 800; }
-.footer-bottom { min-height: 70px; display: flex; align-items: center; gap: 30px; color: rgba(255,255,255,.4); border-top: 1px solid rgba(255,255,255,.1); font-size: .65rem; }
+.footer-bottom { min-height: 70px; display: flex; align-items: center; gap: 30px; color: rgba(255,255,255,.58); border-top: 1px solid rgba(255,255,255,.1); font-size: .65rem; }
 .footer-bottom span:nth-child(2) { margin-left: auto; }
 .footer-bottom button { width: 35px; height: 35px; display: grid; place-items: center; color: #fff; background: var(--red); border: 0; border-radius: 50%; cursor: pointer; }
 .footer-bottom svg { width: 16px; }

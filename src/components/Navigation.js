@@ -53,7 +53,7 @@ export default function Navigation() {
   return (
     <header className="navigation">
       <div className="nav-container">
-        <button className="nav-logo" onClick={() => go('home')} aria-label="Voltronix Automation home"><img src="/logo.png" alt="Voltronix" /><span>Automation</span></button>
+        <button className="nav-logo" onClick={() => go('home')} aria-label="Voltronix Automation home"><img src="/logo.png" alt="Voltronix Automation" width="2160" height="648" /><span>Automation</span></button>
         <nav className="nav-links" aria-label="Primary navigation">
           <button className={active === 'home' && location.pathname === '/' ? 'active' : ''} onClick={() => go('home')}>Home</button>
           <div className="nav-services">

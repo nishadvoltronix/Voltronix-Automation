@@ -26,7 +26,7 @@ export default function HomeSections() {
 
       <div className="trust-layout">
         <div className="trust-copy"><span className="eyebrow">Built for UAE operations</span><h2 className="section-heading">Practical engineering. <span>Responsive support.</span></h2><div className="trust-card"><p>Voltronix brings control-panel engineering, automation know-how and local project coordination together under one team.</p><div className="trust-points"><span><CheckCircle2/>Clear communication</span><span><CheckCircle2/>Structured delivery</span><span><CheckCircle2/>Ongoing technical support</span></div></div></div>
-        <div className="trust-image"><img src="/dubai-skyline.png" alt="Dubai skyline representing Voltronix support across the UAE" loading="lazy"/><div><span>Building smarter and more connected</span><strong>UAE</strong></div></div>
+        <div className="trust-image"><img src="/dubai-skyline.jpg" alt="Dubai skyline representing Voltronix support across the UAE" width="1400" height="788" loading="lazy" decoding="async"/><div><span>Building smarter and more connected</span><strong>UAE</strong></div></div>
       </div>
     </div></section>
   </>;

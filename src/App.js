@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
 
 import Navigation from './components/Navigation';
 import HeroSection from './components/HeroSection';
@@ -52,6 +52,7 @@ function App() {
 
           <Route path="/services/:slug" element={<ServiceDetailPage />} />
           <Route path="/industries/:slug" element={<IndustryDetailPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
 
         <Footer />

@@ -39,6 +39,7 @@
 .delivery-grid h3 { margin: 18px 0 8px; font-size: 1rem; }
 .delivery-grid p { color: var(--muted); font-size: .8rem; }
 .related-services { padding: 85px 0; }
+.related-services h2 { margin-top: 11px; font-size: clamp(1.75rem, 3vw, 2.45rem); line-height: 1.12; letter-spacing: -.04em; }
 .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 24px; }
 .related-grid a { display: flex; align-items: center; gap: 12px; min-height: 86px; padding: 20px; color: var(--ink); border: 1px solid var(--border); border-radius: 8px; text-decoration: none; transition: border-color .2s, transform .2s; }
 .related-grid a:hover { border-color: #f1afb3; transform: translateY(-3px); }
@@ -52,4 +53,4 @@
 .service-cta-band .btn-primary { flex: 0 0 auto; color: var(--red); background: #fff; }
 @keyframes service-hero-drift { from { transform: scale(1.01); } to { transform: scale(1.065) translateX(-1%); } }
 @media (max-width: 800px) { .overview-grid, .service-location-grid { grid-template-columns: 1fr; gap: 35px; } .delivery-grid, .related-grid { grid-template-columns: 1fr; } .service-hero-image { inset: 0; opacity: .35; } .service-hero::after { background: rgba(17,19,24,.74); } }
-@media (max-width: 600px) { .service-hero { min-height: 620px; } .breadcrumbs { margin-bottom: 38px; } .service-overview, .service-location-section, .delivery-section, .related-services { padding: 70px 0; } .capability-card, .service-applications { padding: 24px; } .capability-card ul, .service-applications > div { grid-template-columns: 1fr; } .service-actions > * { width: 100%; } .service-cta-band .container { align-items: flex-start; flex-direction: column; } .service-cta-band .btn-primary { width: 100%; } }
+@media (max-width: 600px) { .service-hero { min-height: 620px; } .service-hero-content h1 { font-size: clamp(2.25rem, 12vw, 3.25rem); } .breadcrumbs { margin-bottom: 38px; overflow-x: auto; white-space: nowrap; } .service-overview, .service-location-section, .delivery-section, .related-services { padding: 70px 0; } .capability-card, .service-applications { padding: 24px; } .capability-card ul, .service-applications > div { grid-template-columns: 1fr; } .service-actions > * { width: 100%; } .service-cta-band .container { align-items: flex-start; flex-direction: column; } .service-cta-band .btn-primary { width: 100%; } }
