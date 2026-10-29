@@ -12,7 +12,10 @@ export default function Footer() {
       <div className="footer-container">
         <div className="footer-main">
           <div className="footer-brand">
-            <Link className="brand-logo" to="/" aria-label="Voltronix Automation home"><ResponsiveImage name="logo" alt="Voltronix" sizes="160px" className="footer-logo-image" /><span className="footer-brand-text">Automation</span></Link>
+            <Link className="brand-logo" to="/" aria-label="Voltronix Automation home">
+              <ResponsiveImage name="logo" alt="Voltronix" sizes="(max-width: 1099px) 240px, 284px" className="footer-logo-image" />
+              <span className="footer-brand-text">Automation</span>
+            </Link>
             <p className="brand-description">Control panel engineering, manufacturing and industrial automation in Dubai and across the UAE.</p>
             <address className="contact-info">
               <a className="contact-item" href={`mailto:${site.email}`}><Mail size={18} aria-hidden="true" /><span>{site.email}</span></a>
