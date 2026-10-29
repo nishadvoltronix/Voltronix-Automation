@@ -1,0 +1,29 @@
+.automation-motion { min-width: 0; }
+.motion-control { display: inline-flex; align-items: center; justify-content: center; gap: .3rem; min-height: 44px; padding: .4rem .55rem; border: 1px solid transparent; border-radius: 7px; background: transparent; color: var(--text-secondary); font-size: .65rem; font-weight: 600; cursor: pointer; }
+.motion-control:hover:enabled { border-color: var(--border-color); background: #fff; color: var(--brand-red-dark); }
+.motion-control:disabled { color: var(--text-muted); cursor: default; }
+@keyframes automation-rise { from { transform: translate3d(var(--entry-x,0),var(--entry-y,26px),0); } to { transform: translate3d(0,0,0); } }
+@keyframes automation-line { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+/* All text remains visible, including before JavaScript and while entering. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-motion="full"] [data-motion-reveal="entered"],
+  [data-motion="quiet"] [data-motion-reveal="entered"] { animation: automation-rise .7s cubic-bezier(.16,.7,.25,1) var(--entry-delay,0s) both; }
+  [data-motion="full"] .hero-title[data-motion-reveal="entered"] > span::after,
+  [data-motion="quiet"] .hero-title[data-motion-reveal="entered"] > span::after { animation: automation-line .65s cubic-bezier(.2,.7,.2,1) both; }
+}
+/* Existing project decorations share the same pause and visibility controls. */
+.automation-motion .float-card,.automation-motion .status-dot { animation-play-state: paused; }
+[data-motion="full"] [data-motion-scene="active"] .float-card,
+[data-motion="full"] [data-motion-scene="active"] .status-dot { animation-play-state: running; }
+.reference-style .hero-title { --entry-delay: .06s; }
+.reference-style .hero-tagline { --entry-delay: .12s; }
+.reference-style .hero-subtitle { --entry-delay: .16s; }
+.reference-style .hero-description { --entry-delay: .2s; }
+.reference-style .hero-cta { --entry-delay: .24s; }
+.reference-style .hero-capabilities { --entry-delay: .28s; }
+.reference-style .hero-panel:first-child { --entry-x: -28px; --entry-y: 0px; }
+.reference-style .hero-panel:last-child { --entry-x: 28px; --entry-y: 0px; }
+.reference-style .service-card:nth-child(3n+2),.reference-style .whyus-card:nth-child(2) { --entry-delay: .1s; }
+.reference-style .service-card:nth-child(3n),.reference-style .whyus-card:nth-child(3) { --entry-delay: .2s; }
+.reference-style .whyus-card:nth-child(4) { --entry-delay: .3s; }
+@media (max-width: 599px) { .reference-style .service-card,.reference-style .whyus-card { --entry-delay: 0s; } }

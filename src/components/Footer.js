@@ -1,42 +1,39 @@
 import React from 'react';
-import { ArrowUp, Mail, MapPin, Phone } from 'lucide-react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Mail, Phone, MapPin, ArrowUp, ArrowRight } from 'lucide-react';
+import services from '../data/services.json';
+import site from '../data/site.json';
+import ResponsiveImage from './ResponsiveImage';
 import './Footer.css';
 
-const groupLinks = [
-  ['Contracting', 'https://voltronix.ae/'],
-  ['DEWA Approvals', 'https://dewaapprovals.ae/'],
-  ['AC Experts', 'https://acexperts.ae/'],
-  ['Switchgear', 'https://switchgear.ae/']
-];
-
 export default function Footer() {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const go = (id) => {
-    const scroll = () => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    if (location.pathname !== '/') { navigate('/'); setTimeout(scroll, 80); } else scroll();
-  };
-
-  return <footer className="footer">
-    <div className="container">
-      <div className="footer-main">
-        <div className="footer-brand"><div className="footer-logo"><img src="/logo.png" alt="Voltronix Automation" width="2160" height="648" loading="lazy"/><span>Automation</span></div><p>Industrial control-panel and automation solutions, engineered in Dubai for operations across the UAE.</p></div>
-        <div className="footer-nav"><h3>Navigate</h3>{['home','services','about','industries','projects','contact'].map(id => <button key={id} onClick={() => go(id)}>{id[0].toUpperCase()+id.slice(1)}</button>)}</div>
-        <div className="footer-nav"><h3>Services</h3><button onClick={() => navigate('/services/plc-panels')}>PLC Panels</button><button onClick={() => navigate('/services/vfd-control-panels')}>VFD Panels</button><button onClick={() => navigate('/services/mcc-assemblies')}>MCC Assemblies</button><button onClick={() => navigate('/services/bms-control-panels')}>BMS Panels</button></div>
-        <div className="footer-contact"><h3>Contact</h3><a href="tel:+971504327804"><Phone/>+971 50 432 7804</a><a href="mailto:info@voltronix.ae"><Mail/>info@voltronix.ae</a><p><MapPin/>DIP 02, Dubai, UAE</p></div>
+  return (
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-main">
+          <div className="footer-brand">
+            <Link className="brand-logo" to="/" aria-label="Voltronix Automation home">
+              <ResponsiveImage name="logo" alt="Voltronix" sizes="(max-width: 1099px) 240px, 284px" className="footer-logo-image" />
+              <span className="footer-brand-text">Automation</span>
+            </Link>
+            <p className="brand-description">Control panel engineering, manufacturing and industrial automation in Dubai and across the UAE.</p>
+            <address className="contact-info">
+              <a className="contact-item" href={`mailto:${site.email}`}><Mail size={18} aria-hidden="true" /><span>{site.email}</span></a>
+              <a className="contact-item" href={`tel:${site.phone}`}><Phone size={18} aria-hidden="true" /><span>{site.phone}</span></a>
+              <p className="contact-item"><MapPin size={18} aria-hidden="true" /><span>{site.address}</span></p>
+            </address>
+          </div>
+          <div className="footer-links">
+            <div className="links-column"><h2>Services</h2><ul>{services.map((service) => <li key={service.slug}><Link to={`/services/${service.slug}/`}>{service.title}</Link></li>)}</ul></div>
+            <div className="links-column"><h2>Explore</h2><ul>
+              <li><Link to="/">Home</Link></li><li><Link to="/#why-us">Why Voltronix</Link></li><li><Link to="/#projects">Application Examples</Link></li><li><Link to="/#contact">Contact & Quotations</Link></li>
+              <li><Link to="/#applications">Automation Applications</Link></li><li><Link to="/contracting/">Site Contracting</Link></li>
+            </ul></div>
+          </div>
+          <div className="footer-cta"><h2>Let's Work Together</h2><p>Have a project in mind? Share your requirements and discuss a suitable control panel solution.</p><Link className="cta-button" to="/#contact">Start a Project<ArrowRight size={18} aria-hidden="true" /></Link></div>
+        </div>
+        <div className="footer-bottom"><p>© <span suppressHydrationWarning>{new Date().getFullYear()}</span> {site.name}. All rights reserved.</p><Link className="scroll-top" to="/#home" aria-label="Back to top"><ArrowUp size={20} aria-hidden="true" /></Link></div>
       </div>
-    </div>
-
-    <div className="footer-group-bar">
-      <div className="container footer-group-links">
-        <strong>VOLTRONIX GROUP</strong>
-        {groupLinks.map(([label, href], index) => <a key={label} className={index === 0 ? 'active' : ''} href={href} target="_blank" rel="noreferrer">{label}</a>)}
-      </div>
-    </div>
-
-    <div className="container">
-      <div className="footer-bottom"><span>© {new Date().getFullYear()} Voltronix Automation. All rights reserved.</span><span>Engineering a smarter future.</span><button onClick={() => window.scrollTo({top:0, behavior:'smooth'})} aria-label="Back to top"><ArrowUp/></button></div>
-    </div>
-  </footer>;
+    </footer>
+  );
 }

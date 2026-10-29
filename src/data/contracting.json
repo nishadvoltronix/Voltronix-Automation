@@ -1,0 +1,36 @@
+{
+  "title": "Automation & Control Contracting",
+  "seoTitle": "Control Cable & Automation Contracting in Dubai | Voltronix",
+  "seoDescription": "Automation site contracting in Dubai, UAE. Control cable pulling, cable trays, glanding, termination, field device connections and commissioning support.",
+  "heading": "Site work that connects your control panels to the equipment they operate.",
+  "overview": "Voltronix Automation provides site contracting for control and automation installations, including control cable pulling, cable tray and containment work, cable termination and field connections. The installation scope is coordinated with the panel drawings, site layout and the agreed project requirements.",
+  "context": "We review the cable schedule, routes, equipment locations and access arrangements before confirming the work package. This helps define the materials, installation boundaries, testing and handover responsibilities. Panel supply, PLC/HMI programming and site installation can be coordinated within one project scope or quoted as clearly defined packages.",
+  "color": "#e50914",
+  "homepageItems": [
+    {"title": "Control Cable Pulling", "description": "Routing and pulling control and instrumentation cables between panels and field equipment, with cable identification and coordination of the agreed routes.", "icon": "Cable"},
+    {"title": "Cable Trays & Containment", "description": "Cable tray, ladder or trunking installation with supports, fittings and accessories selected around the cable schedule and site arrangement.", "icon": "Network"},
+    {"title": "Glanding & Termination", "description": "Control cable glanding, ferruling, labelling and termination at the specified panels, junction boxes and field devices.", "icon": "Wrench"},
+    {"title": "Testing & Site Support", "description": "Point-to-point and I/O checks, functional verification and commissioning assistance against the agreed drawings and control sequence.", "icon": "ClipboardCheck"}
+  ],
+  "scope": [
+    {"title": "Control & Instrumentation Cable Pulling", "description": "Installation of the agreed control and instrumentation cable circuits, with routing, pulling and identification coordinated against the approved cable schedule and available containment.", "points": ["Cable route review and installation coordination", "Cable identification at panels and field connection points", "Preparation of installed cable schedules and records"]},
+    {"title": "Cable Trays, Ladders & Trunking", "description": "Installation of cable containment and associated supports and fittings, arranged around the specified cable routes and the site layout.", "points": ["Tray, ladder or trunking sections and accessories", "Supports and fittings within the agreed installation scope", "Coordination of routing, access and cable separation requirements"]},
+    {"title": "Glanding, Termination & Identification", "description": "Completion of control cable ends and field connections so circuits can be checked against the panel and equipment drawings.", "points": ["Cable glands and terminations for the specified equipment", "Ferrules, terminal references and circuit labels", "Point-to-point connection checks and termination records"]},
+    {"title": "Field Device & Panel Connections", "description": "Connection of the specified control signals between panels, instruments, sensors, actuators and equipment interfaces.", "points": ["Panel-to-field control and instrumentation connections", "I/O mapping and interface checks against the approved point list", "Coordination with equipment suppliers and other site trades"]},
+    {"title": "Testing & Commissioning Support", "description": "Verification of the agreed installation and control sequence, with observations recorded for project handover.", "points": ["Cable continuity and point-to-point checks within scope", "Field I/O and agreed loop checks", "Functional sequence checks, commissioning assistance and handover records"]},
+    {"title": "Retrofits, Troubleshooting & Maintenance", "description": "Review of existing control installations to define a practical upgrade, repair or maintenance work package.", "points": ["Existing wiring and control-interface review", "Identified panel, PLC/HMI or field-circuit modifications", "Troubleshooting findings and documented changes"]}
+  ],
+  "process": [
+    {"title": "Review the Requirements", "description": "Share drawings, the cable schedule, equipment list and required operating sequence. Site conditions are reviewed where they affect the scope."},
+    {"title": "Confirm the Work Package", "description": "Agree materials, installation boundaries, access arrangements, coordination responsibilities and the testing requirements."},
+    {"title": "Build & Install", "description": "Coordinate panel work, containment, cable pulling and terminations against the agreed drawings and site arrangements."},
+    {"title": "Verify & Hand Over", "description": "Complete the agreed checks and commissioning support, then provide the installation records and project documentation within scope."}
+  ],
+  "quotationInputs": ["Single-line diagrams, control drawings and the relevant bill of quantities", "Cable types, sizes, lengths and circuit or termination schedules", "Tray, ladder or trunking sizes, routes and support requirements", "Equipment and panel locations, site access and working arrangements", "Required testing, commissioning, documentation and project dates"],
+  "faq": [
+    {"question": "Can the quotation include both control panels and site work?", "answer": "Yes. Panel engineering and supply can be combined with the agreed cable, containment, termination and commissioning work. The offer identifies the included equipment and installation responsibilities."},
+    {"question": "Can you quote when cable routes or quantities are not final?", "answer": "Share the available drawings and equipment locations first. If routes, access or quantities need to be checked, a site review can be arranged before the installation scope and price are confirmed."},
+    {"question": "Can you work on an existing control installation?", "answer": "Existing panel drawings, controller details and field wiring are reviewed before modifications are proposed. The upgrade or maintenance scope and any required site coordination are then agreed."},
+    {"question": "What documentation can be included at handover?", "answer": "The agreed scope can include panel drawings, cable and terminal identification, I/O records, functional check sheets and records of changes made during installation or commissioning."}
+  ]
+}

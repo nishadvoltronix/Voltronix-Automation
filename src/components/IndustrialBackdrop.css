@@ -1,0 +1,37 @@
+.industrial-backdrop { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; contain: strict; }
+.industrial-grid { position: absolute; inset: -64px; background-image: linear-gradient(rgba(229,9,20,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(229,9,20,.035) 1px,transparent 1px); background-size: 64px 64px; }
+.industrial-aura { position: absolute; width: min(580px,70vw); aspect-ratio: 1; background: radial-gradient(circle,rgba(229,9,20,.07),transparent 66%); border-radius: 50%; }
+.aura-one { top: -15%; left: -15%; }.aura-two { bottom: -20%; right: -15%; opacity: .7; }
+.industrial-circuits { position: absolute; width: 100%; height: 100%; color: var(--brand-red); stroke: currentColor; stroke-width: 1; opacity: .13; }
+.industrial-circuits circle { fill: var(--brand-red); stroke: none; }
+.industrial-symbol { position: absolute; color: var(--brand-charcoal); opacity: .07; }
+.industrial-symbol svg { display: block; width: 100%; height: 100%; }
+.symbol-cog { width: 78px; height: 78px; top: 20%; left: 3%; }
+.symbol-chip { width: 56px; height: 56px; top: 68%; right: 3%; color: var(--brand-red); }
+.symbol-control { width: 42px; height: 42px; top: 7%; right: 18%; }
+.industrial-node { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: var(--brand-red); opacity: .2; box-shadow: 0 0 0 4px rgba(229,9,20,.04); }
+.industrial-data { position: absolute; width: 180px; height: 1px; background: rgba(229,9,20,.08); overflow: hidden; }
+.data-one { left: 5%; top: 46%; }.data-two { right: 6%; top: 77%; }
+.industrial-data i { display: block; width: 18px; height: 1px; background: rgba(229,9,20,.5); }
+.industrial-scan { position: absolute; left: 0; right: 0; top: 0; height: 1px; background: linear-gradient(90deg,transparent,rgba(229,9,20,.1),transparent); }
+@keyframes industrial-grid-drift { to { transform: translate3d(64px,64px,0); } }
+@keyframes industrial-aura-drift { 0%,100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(24px,-20px,0); } }
+@keyframes industrial-symbol-drift { 0%,100% { transform: translate3d(0,0,0) rotate(0); } 50% { transform: translate3d(12px,-18px,0) rotate(18deg); } }
+@keyframes industrial-node-pulse { 0%,100% { opacity: .12; transform: scale(1); } 50% { opacity: .35; transform: scale(1.35); } }
+@keyframes industrial-data-flow { from { transform: translateX(-20px); } to { transform: translateX(185px); } }
+@keyframes industrial-scan { from { transform: translateY(-2px); } to { transform: translateY(100vh); } }
+@media (prefers-reduced-motion: no-preference) {
+  .industrial-grid { animation: industrial-grid-drift 36s linear infinite paused; }
+  .industrial-aura { animation: industrial-aura-drift 18s ease-in-out infinite paused; }
+  .aura-two { animation-delay: -9s; }
+  .industrial-symbol { animation: industrial-symbol-drift 22s ease-in-out infinite paused; }
+  .symbol-chip { animation-delay: -7s; }
+  .industrial-node { animation: industrial-node-pulse 8s ease-in-out var(--node-delay) infinite paused; }
+  .industrial-data i { animation: industrial-data-flow 5s linear infinite paused; }
+  .data-two i { animation-delay: -2.5s; }
+  .industrial-scan { animation: industrial-scan 18s linear infinite paused; }
+  [data-motion="full"] .industrial-backdrop[data-motion-scene="active"] > *,
+  [data-motion="full"] .industrial-backdrop[data-motion-scene="active"] .industrial-data i { animation-play-state: running; }
+  [data-motion="quiet"] .industrial-backdrop[data-motion-scene="active"] .industrial-data i { animation-play-state: running; }
+}
+@media (max-width: 900px) { .industrial-aura,.industrial-symbol,.industrial-scan { display: none; } .industrial-grid { opacity: .65; } .industrial-circuits { opacity: .08; } .industrial-node:nth-of-type(2n) { display: none; } }

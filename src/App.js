@@ -1,65 +1,67 @@
-import React, { useEffect } from 'react';
-import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
-
+import React, { lazy, Suspense, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navigation from './components/Navigation';
-import HeroSection from './components/HeroSection';
-import ServicesSection from './components/ServicesSection';
-import ProjectsSection from './components/ProjectsSection';
 import Footer from './components/Footer';
-import WhyUsSection from './components/WhyUsSection';
-import ContactSection from './components/ContactSection';
-import HomeSections from './components/HomeSections';
-
-import ServiceDetailPage from './pages/ServiceDetailPage';
-import IndustryDetailPage from './pages/IndustryDetailPage';
-
 import SalesIqWidget from './components/SalesIqWidget';
-import MotionEffects from './components/MotionEffects';
-
+import HomePage from './pages/HomePage';
+import NotFoundPage from './pages/NotFoundPage';
+import PageMetadata from './seo/PageMetadata';
+import { AutomationMotion } from './components/AutomationMotion';
+import IndustrialBackdrop from './components/IndustrialBackdrop';
 import './App.css';
+import './ReferenceStyle.css';
 
-function ScrollToTopOnRouteChange() {
-  const location = useLocation();
+const ServiceDetailPage = lazy(() => import('./pages/ServiceDetailPage'));
+const ApplicationDetailPage = lazy(() => import('./pages/ApplicationDetailPage'));
+const ContractingPage = lazy(() => import('./pages/ContractingPage'));
 
+function ScrollToLocation() {
+  const { pathname, hash, key } = useLocation();
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  }, [location.pathname, location.search]);
-
+    if (!hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      return;
+    }
+    let observer;
+    let timer;
+    const scroll = () => {
+      const element = document.getElementById(hash.slice(1));
+      if (!element) return false;
+      const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+      element.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+      observer?.disconnect();
+      window.clearTimeout(timer);
+      return true;
+    };
+    if (!scroll()) {
+      observer = new MutationObserver(scroll);
+      observer.observe(document.getElementById('root'), { childList: true, subtree: true });
+      timer = window.setTimeout(() => observer.disconnect(), 3000);
+    }
+    return () => { observer?.disconnect(); window.clearTimeout(timer); };
+  }, [pathname, hash, key]);
   return null;
 }
 
-function App() {
+export default function App() {
   return (
-      <div className="App">
-        <Navigation />
-        <ScrollToTopOnRouteChange />
-        <MotionEffects />
-
+    <AutomationMotion><div className="App">
+      <IndustrialBackdrop />
+      <a href="#main-content" className="skip-link">Skip to content</a>
+      <PageMetadata />
+      <Navigation />
+      <ScrollToLocation />
+      <Suspense fallback={<main id="main-content" className="page-loading" role="status">Loading service details…</main>}>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <main>
-                <HeroSection />
-                <ServicesSection />
-                <HomeSections />
-                <ProjectsSection />
-                <WhyUsSection />
-                <ContactSection />
-              </main>
-            }
-          />
-
+          <Route path="/" element={<HomePage />} />
           <Route path="/services/:slug" element={<ServiceDetailPage />} />
-          <Route path="/industries/:slug" element={<IndustryDetailPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/applications/:slug" element={<ApplicationDetailPage />} />
+          <Route path="/contracting" element={<ContractingPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
-
-        <Footer />
-
-        {/* Zoho SalesIQ bot */}
-        <SalesIqWidget />
-
+      </Suspense>
+      <Footer />
+      <SalesIqWidget />
         <a
           className="vx-wa-symbol"
           href="https://wa.me/971504327804"
@@ -82,8 +84,6 @@ function App() {
             />
           </svg>
         </a>
-      </div>
+    </div></AutomationMotion>
   );
 }
-
-export default App;

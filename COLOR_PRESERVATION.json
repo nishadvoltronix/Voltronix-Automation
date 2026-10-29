@@ -1,0 +1,22 @@
+{
+  "reference": "https://voltronix-automation.vercel.app/",
+  "reference_stylesheet": "https://voltronix-automation.vercel.app/static/css/main.ecff1e2e.css",
+  "palette": {
+    "red": "#e50914",
+    "dark_red": "#b90d16",
+    "red_tint": "#fff1f2",
+    "charcoal": "#17191d",
+    "footer": "#111318",
+    "ink": "#151b26",
+    "grey_surface": "#f5f7fa",
+    "muted": "#647184",
+    "border": "#e4e8ed",
+    "white": "#ffffff"
+  },
+  "stylesheets_with_identical_layout_and_breakpoints": 14,
+  "content_data_preserved": true,
+  "unchanged_public_assets": 54,
+  "pages_with_identical_content_markup_and_metadata_except_colors": 14,
+  "project_behavior_preserved": true,
+  "automated_checks_passed": 44
+}

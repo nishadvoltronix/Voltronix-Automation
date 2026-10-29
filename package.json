@@ -1,5 +1,5 @@
 {
-  "name": "industrial-automation-portfolio",
+  "name": "voltronix-automation-frontend",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -11,11 +11,14 @@
     "lucide-react": "^0.294.0"
   },
   "scripts": {
-    "dev": "react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postbuild": "node scripts/prerender.cjs",
+    "preview": "node scripts/preview.cjs",
+    "test:ci": "react-scripts test --watchAll=false --runInBand",
+    "verify": "node scripts/verify-production.cjs"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

@@ -1,0 +1,239 @@
+{
+  "plc-hero": {
+    "src": "/media/plc-hero-1122.204a46b01b.webp",
+    "fallbackSrc": "/media/plc-hero-800.ee2b4626a9.jpg",
+    "srcSet": "/media/plc-hero-400.ad9ef62902.webp 400w, /media/plc-hero-800.590f6186d7.webp 800w, /media/plc-hero-1122.204a46b01b.webp 1122w",
+    "width": 1122,
+    "height": 1402,
+    "variants": [
+      {
+        "src": "/media/plc-hero-400.ad9ef62902.webp",
+        "width": 400,
+        "height": 500,
+        "bytes": 24422
+      },
+      {
+        "src": "/media/plc-hero-800.590f6186d7.webp",
+        "width": 800,
+        "height": 1000,
+        "bytes": 73674
+      },
+      {
+        "src": "/media/plc-hero-1122.204a46b01b.webp",
+        "width": 1122,
+        "height": 1402,
+        "bytes": 116572
+      }
+    ]
+  },
+  "vfd-hero": {
+    "src": "/media/vfd-hero-1122.14071a6b96.webp",
+    "fallbackSrc": "/media/vfd-hero-800.0dd1ee55dc.jpg",
+    "srcSet": "/media/vfd-hero-400.51118a5d80.webp 400w, /media/vfd-hero-800.cb2fc16385.webp 800w, /media/vfd-hero-1122.14071a6b96.webp 1122w",
+    "width": 1122,
+    "height": 1402,
+    "variants": [
+      {
+        "src": "/media/vfd-hero-400.51118a5d80.webp",
+        "width": 400,
+        "height": 500,
+        "bytes": 20630
+      },
+      {
+        "src": "/media/vfd-hero-800.cb2fc16385.webp",
+        "width": 800,
+        "height": 1000,
+        "bytes": 60706
+      },
+      {
+        "src": "/media/vfd-hero-1122.14071a6b96.webp",
+        "width": 1122,
+        "height": 1402,
+        "bytes": 95274
+      }
+    ]
+  },
+  "plc-panels": {
+    "src": "/media/plc-panels-1080.8ee7d1dbf9.webp",
+    "fallbackSrc": "/media/plc-panels-800.9e13568d99.jpg",
+    "srcSet": "/media/plc-panels-400.e950dd4aec.webp 400w, /media/plc-panels-800.682fa6dea7.webp 800w, /media/plc-panels-1080.8ee7d1dbf9.webp 1080w",
+    "width": 1080,
+    "height": 1432,
+    "variants": [
+      {
+        "src": "/media/plc-panels-400.e950dd4aec.webp",
+        "width": 400,
+        "height": 530,
+        "bytes": 39898
+      },
+      {
+        "src": "/media/plc-panels-800.682fa6dea7.webp",
+        "width": 800,
+        "height": 1061,
+        "bytes": 113272
+      },
+      {
+        "src": "/media/plc-panels-1080.8ee7d1dbf9.webp",
+        "width": 1080,
+        "height": 1432,
+        "bytes": 176276
+      }
+    ]
+  },
+  "vfd-control-panels": {
+    "src": "/media/vfd-control-panels-1041.74693af173.webp",
+    "fallbackSrc": "/media/vfd-control-panels-800.720b2d0195.jpg",
+    "srcSet": "/media/vfd-control-panels-400.90ef1cc6b4.webp 400w, /media/vfd-control-panels-800.bfda2d5894.webp 800w, /media/vfd-control-panels-1041.74693af173.webp 1041w",
+    "width": 1041,
+    "height": 1600,
+    "variants": [
+      {
+        "src": "/media/vfd-control-panels-400.90ef1cc6b4.webp",
+        "width": 400,
+        "height": 615,
+        "bytes": 29430
+      },
+      {
+        "src": "/media/vfd-control-panels-800.bfda2d5894.webp",
+        "width": 800,
+        "height": 1230,
+        "bytes": 77506
+      },
+      {
+        "src": "/media/vfd-control-panels-1041.74693af173.webp",
+        "width": 1041,
+        "height": 1600,
+        "bytes": 110430
+      }
+    ]
+  },
+  "mcc-assemblies": {
+    "src": "/media/mcc-assemblies-1079.2f5f5e15e4.webp",
+    "fallbackSrc": "/media/mcc-assemblies-800.78c487055d.jpg",
+    "srcSet": "/media/mcc-assemblies-400.cb028c222e.webp 400w, /media/mcc-assemblies-800.afccd97f1e.webp 800w, /media/mcc-assemblies-1079.2f5f5e15e4.webp 1079w",
+    "width": 1079,
+    "height": 1427,
+    "variants": [
+      {
+        "src": "/media/mcc-assemblies-400.cb028c222e.webp",
+        "width": 400,
+        "height": 529,
+        "bytes": 16786
+      },
+      {
+        "src": "/media/mcc-assemblies-800.afccd97f1e.webp",
+        "width": 800,
+        "height": 1058,
+        "bytes": 43114
+      },
+      {
+        "src": "/media/mcc-assemblies-1079.2f5f5e15e4.webp",
+        "width": 1079,
+        "height": 1427,
+        "bytes": 65322
+      }
+    ]
+  },
+  "bms-control-panels": {
+    "src": "/media/bms-control-panels-1080.4032166a39.webp",
+    "fallbackSrc": "/media/bms-control-panels-800.4d8a60343e.jpg",
+    "srcSet": "/media/bms-control-panels-400.b69f3ba2d9.webp 400w, /media/bms-control-panels-800.a69c65afdb.webp 800w, /media/bms-control-panels-1080.4032166a39.webp 1080w",
+    "width": 1080,
+    "height": 1158,
+    "variants": [
+      {
+        "src": "/media/bms-control-panels-400.b69f3ba2d9.webp",
+        "width": 400,
+        "height": 429,
+        "bytes": 43112
+      },
+      {
+        "src": "/media/bms-control-panels-800.a69c65afdb.webp",
+        "width": 800,
+        "height": 858,
+        "bytes": 123076
+      },
+      {
+        "src": "/media/bms-control-panels-1080.4032166a39.webp",
+        "width": 1080,
+        "height": 1158,
+        "bytes": 181428
+      }
+    ]
+  },
+  "safety-esd-panel": {
+    "src": "/media/safety-esd-panel-1066.970206f6c4.webp",
+    "fallbackSrc": "/media/safety-esd-panel-800.9322239563.jpg",
+    "srcSet": "/media/safety-esd-panel-400.7ccfab87dc.webp 400w, /media/safety-esd-panel-800.a5ffb7fae6.webp 800w, /media/safety-esd-panel-1066.970206f6c4.webp 1066w",
+    "width": 1066,
+    "height": 1293,
+    "variants": [
+      {
+        "src": "/media/safety-esd-panel-400.7ccfab87dc.webp",
+        "width": 400,
+        "height": 485,
+        "bytes": 11030
+      },
+      {
+        "src": "/media/safety-esd-panel-800.a5ffb7fae6.webp",
+        "width": 800,
+        "height": 970,
+        "bytes": 28582
+      },
+      {
+        "src": "/media/safety-esd-panel-1066.970206f6c4.webp",
+        "width": 1066,
+        "height": 1293,
+        "bytes": 44048
+      }
+    ]
+  },
+  "other-control-panels": {
+    "src": "/media/other-control-panels-1080.3f5b81b3f1.webp",
+    "fallbackSrc": "/media/other-control-panels-800.290a4dee5c.jpg",
+    "srcSet": "/media/other-control-panels-400.53c8547784.webp 400w, /media/other-control-panels-800.a1bd8e66ad.webp 800w, /media/other-control-panels-1080.3f5b81b3f1.webp 1080w",
+    "width": 1080,
+    "height": 1488,
+    "variants": [
+      {
+        "src": "/media/other-control-panels-400.53c8547784.webp",
+        "width": 400,
+        "height": 551,
+        "bytes": 36098
+      },
+      {
+        "src": "/media/other-control-panels-800.a1bd8e66ad.webp",
+        "width": 800,
+        "height": 1102,
+        "bytes": 81708
+      },
+      {
+        "src": "/media/other-control-panels-1080.3f5b81b3f1.webp",
+        "width": 1080,
+        "height": 1488,
+        "bytes": 115422
+      }
+    ]
+  },
+  "logo": {
+    "src": "/media/logo-720.0706e23376.webp",
+    "fallbackSrc": "/logo.png",
+    "srcSet": "/media/logo-360.76c3f1303f.webp 360w, /media/logo-720.0706e23376.webp 720w",
+    "width": 2160,
+    "height": 648,
+    "variants": [
+      {
+        "src": "/media/logo-360.76c3f1303f.webp",
+        "width": 360,
+        "height": 108,
+        "bytes": 4944
+      },
+      {
+        "src": "/media/logo-720.0706e23376.webp",
+        "width": 720,
+        "height": 216,
+        "bytes": 9804
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+.voltronix-zoho-form .zf-templateWrapper { background: #fff; border: 1px solid var(--border-color); border-radius: 14px; padding: clamp(1rem,3vw,2rem); }
+.voltronix-zoho-form .zf-frmTitle { font-size: 1.4rem; margin-bottom: .5rem; }
+.form-required-hint,.form-phone-hint { color: var(--text-secondary); font-size: .85rem; margin-bottom: 1.25rem; }
+.voltronix-zoho-form .zf-tempFrmWrapper { min-width: 0; margin-bottom: 1rem; }
+.voltronix-zoho-form label { display: block; font-size: .9rem; font-weight: 600; color: var(--text-primary); margin-bottom: .4rem; }
+.voltronix-zoho-form input:not([type="radio"]):not([type="hidden"]),.voltronix-zoho-form textarea { width: 100%; min-width: 0; min-height: 48px; padding: .75rem; border: 1px solid #8591a2; border-radius: 8px; background: #fff; color: var(--text-primary); font: inherit; font-size: 16px; }
+.voltronix-zoho-form textarea { resize: vertical; }
+.voltronix-zoho-form input:focus-visible,.voltronix-zoho-form textarea:focus-visible { outline: 3px solid var(--brand-red); outline-offset: 2px; }
+.voltronix-zoho-form .zf-phwrapper { display: grid; grid-template-columns: 5.25rem minmax(0,1fr); gap: .5rem; }
+.voltronix-zoho-form .zf-phwrapper input[readonly] { color: var(--text-secondary); background: var(--bg-secondary); }
+.quote-request-types { border: 0; padding: 0; min-width: 0; margin: .5rem 0 1rem; }
+.quote-request-types legend { font-size: .95rem; font-weight: 600; margin-bottom: .75rem; }
+.voltronix-zoho-form .zf-overflow { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin-bottom: .75rem; }
+.voltronix-zoho-form .zf-radioChoice { display: flex; align-items: center; gap: .5rem; min-height: 44px; cursor: pointer; }
+.voltronix-zoho-form input[type="radio"] { width: 20px; height: 20px; accent-color: var(--brand-red); }
+.voltronix-zoho-form .zf-submitColor { min-width: 180px; min-height: 48px; border: 0; border-radius: 8px; padding: .75rem 1.5rem; font: inherit; font-weight: 700; color: #fff; background: var(--brand-red); cursor: pointer; }
+.voltronix-zoho-form .zf-submitColor:disabled { opacity: .6; cursor: progress; }
+.form-error { color: var(--error); font-weight: 600; margin-bottom: 1rem; }
+.required-mark { color: var(--error); }
+@media (max-width: 599px) { .voltronix-zoho-form .zf-submitColor { width: 100%; } }

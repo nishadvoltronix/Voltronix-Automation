@@ -1,0 +1,6 @@
+[
+  {"question": "Do you provide site contracting as well as control panels?", "answer": "Yes. We provide control and automation site work, including control cable pulling, cable tray and containment installation, glanding, terminations and agreed testing or commissioning support."},
+  {"question": "Can you develop automation for swimming pools and fountains?", "answer": "Yes. Pool and water-feature projects can include pump sequences, operating schedules, field monitoring and interfaces to the specified equipment. The control arrangement is developed around the system drawings and the agreed sequence of operation."},
+  {"question": "Can new panels connect to our existing PLC or BMS?", "answer": "We review the existing controller, point list and communication or control interfaces before confirming the integration scope. This applies to new installations and to selected upgrades of existing systems."},
+  {"question": "What should we send for a quotation?", "answer": "Send the drawings or bill of quantities, equipment and load schedules, operating sequence and any preferred components. For site work, include the cable schedule, containment routes, equipment locations and access requirements."}
+]
