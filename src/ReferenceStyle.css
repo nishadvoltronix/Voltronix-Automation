@@ -30,18 +30,9 @@
 .schematic-slot { stroke: #b4bfcd; stroke-width: 1.5; }
 .schematic-led,.schematic-packet circle { fill: var(--brand-red); }
 .schematic-wave { stroke: var(--brand-red); stroke-width: 2; stroke-linejoin: round; }
-.hero-motion-control { display: none; }
-.reference-style .nav-links.desktop { margin-left: auto; }
-.nav-motion-control { display: flex; }
-.reference-style .nav-motion-control .motion-control { width: 44px; min-width: 44px; border: 1px solid var(--border-color); border-radius: 50%; background: #fff; }
-.nav-motion-control .motion-control > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.nav-motion-control .motion-control svg { width: 16px; height: 16px; }
+.hero-motion-control { display: block; }
 .mobile-motion-control { border-top: 1px solid var(--border-color); margin-top: .5rem; padding: .5rem .25rem 0; }
 .reference-style .mobile-motion-control .motion-control { font-size: .85rem; padding-inline: .5rem; }
-.reference-style .nav-link { position: relative; transition: color .25s ease; }
-.reference-style .nav-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: .45rem; height: 2px; border-radius: 2px; background: linear-gradient(90deg,var(--brand-red),var(--brand-red-dark)); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
-.reference-style .nav-link:hover { color: var(--brand-red-dark); text-decoration: none; }
-.reference-style .nav-link:hover::after { transform: scaleX(1); }
 .reference-style .services-dropdown { border-radius: 16px; box-shadow: 0 16px 45px rgba(21,27,38,.12); }
 .reference-style .section-badge { border-color: rgba(229,9,20,.16); }
 .reference-style .section-title { letter-spacing: -.035em; }
@@ -119,8 +110,6 @@
   .reference-style .hero-panel img { height: clamp(190px,40vw,330px); }
 }
 @media (max-width: 900px) {
-  .reference-style .nav-motion-control { display: none; }
-  .hero-motion-control { display: block; }
   .reference-style .grid-overlay,.reference-style .services-grid,.reference-style .whyus-grid { animation: none; }
 }
 @media (max-width: 599px) {

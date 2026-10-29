@@ -10,8 +10,9 @@ import './Navigation.css';
 const navLinks = [
   { name: 'Home', href: '/#home' },
   { name: 'Services', href: '/#services' },
-  { name: 'Why Us', href: '/#why-us' },
-  { name: 'Projects', href: '/#applications' },
+  { name: 'About', href: '/#why-us' },
+  { name: 'Industries', href: '/#applications' },
+  { name: 'Projects', href: '/#projects' },
   { name: 'Contact', href: '/#contact' }
 ];
 
@@ -24,9 +25,9 @@ const dropdowns = {
       { title: 'From the Panel to the Field', href: '/#contracting', className: 'nav-contracting-link' }
     ]
   },
-  Projects: {
-    id: 'project-navigation',
-    label: 'Show project applications',
+  Industries: {
+    id: 'industry-navigation',
+    label: 'Show industries',
     heading: 'Automation for Your Application',
     items: applications.map((application) => ({ title: application.title, href: `/applications/${application.slug}/` }))
   }
@@ -38,6 +39,13 @@ export default function Navigation() {
   const navRef = useRef(null);
   const toggleRef = useRef(null);
   const location = useLocation();
+  const isActive = (link) => {
+    if (link.name === 'Services' && (location.pathname.startsWith('/services/') || location.pathname.startsWith('/contracting'))) return true;
+    if (link.name === 'Industries' && location.pathname.startsWith('/applications/')) return true;
+    if (location.pathname !== '/') return false;
+    if (link.name === 'Services' && location.hash === '#contracting') return true;
+    return link.href === `/${location.hash || '#home'}`;
+  };
 
   useEffect(() => {
     setMobileOpen(false);
@@ -99,25 +107,25 @@ export default function Navigation() {
     <nav ref={navRef} className="navigation scrolled" aria-label="Main navigation">
       <div className="nav-container">
         <Link className="nav-logo" to="/" aria-label="Voltronix Automation home" onClick={closeMenus}>
-          <ResponsiveImage name="logo" alt="Voltronix" sizes="180px" priority className="nav-logo-image" />
+          <ResponsiveImage name="logo" alt="Voltronix" sizes="(max-width: 360px) 164px, (max-width: 420px) 175px, (max-width: 900px) 202px, (max-width: 1100px) 229px, 284px" priority className="nav-logo-image" />
           <span className="nav-logo-text">Automation</span>
         </Link>
         <div className="nav-links desktop">
           {navLinks.map((link) => dropdowns[link.name] ? (
-            <div className={`nav-services${link.name === 'Projects' ? ' nav-projects' : ''}`} key={link.name}>
-              <Link className="nav-link" to={link.href} onClick={closeMenus}>{link.name}</Link>
-              <button type="button" className={`services-menu-toggle${link.name === 'Projects' ? ' projects-menu-toggle' : ''}`} aria-label={dropdowns[link.name].label}
+            <div className={`nav-services${link.name === 'Industries' ? ' nav-industries' : ''}`} key={link.name}>
+              <Link className="nav-link" to={link.href} aria-current={isActive(link) ? 'location' : undefined} onClick={closeMenus}>{link.name}</Link>
+              <button type="button" className="services-menu-toggle" aria-label={dropdowns[link.name].label}
                 aria-expanded={openDropdown === link.name} aria-controls={dropdowns[link.name].id}
                 onClick={(event) => toggleDropdown(link.name, event.currentTarget)}>
-                <ChevronDown size={18} aria-hidden="true" />
+                <ChevronDown size={14} aria-hidden="true" />
               </button>
               {openDropdown === link.name && !mobileOpen && dropdownLinks(link.name, 'services-dropdown')}
             </div>
           ) : (
-            <Link key={link.name} className="nav-link" to={link.href} onClick={closeMenus}>{link.name}</Link>
+            <Link key={link.name} className="nav-link" to={link.href} aria-current={isActive(link) ? 'location' : undefined} onClick={closeMenus}>{link.name}</Link>
           ))}
         </div>
-        <div className="nav-motion-control"><MotionControl /></div>
+        <Link className="nav-quote" to="/#contact" onClick={closeMenus}>Get a Quote <ArrowUpRight size={16} aria-hidden="true" /></Link>
         <button type="button" className="mobile-menu-btn" aria-label={mobileOpen ? 'Close navigation' : 'Open navigation'}
           aria-expanded={mobileOpen} aria-controls="mobile-navigation"
           onClick={(event) => { toggleRef.current = event.currentTarget; setMobileOpen((open) => !open); setOpenDropdown(null); }}>
@@ -128,9 +136,9 @@ export default function Navigation() {
         <div id="mobile-navigation" className="mobile-menu open">
           {navLinks.map((link) => (
             <div key={link.name} className="mobile-nav-row">
-              <Link className="mobile-nav-link" to={link.href} onClick={closeMenus}>{link.name}</Link>
+              <Link className="mobile-nav-link" to={link.href} aria-current={isActive(link) ? 'location' : undefined} onClick={closeMenus}>{link.name}</Link>
               {dropdowns[link.name] && (
-                <button type="button" className={`services-menu-toggle${link.name === 'Projects' ? ' projects-menu-toggle' : ''}`} aria-label={dropdowns[link.name].label}
+                <button type="button" className="services-menu-toggle" aria-label={dropdowns[link.name].label}
                   aria-expanded={openDropdown === link.name} aria-controls={dropdowns[link.name].id}
                   onClick={(event) => toggleDropdown(link.name, event.currentTarget)}>
                   <ChevronDown size={20} aria-hidden="true" />

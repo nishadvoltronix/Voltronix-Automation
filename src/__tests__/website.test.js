@@ -145,53 +145,61 @@ test('desktop Services dropdown keeps six panel links, adds site contracting and
   expect(container.querySelector('output').textContent).toBe('/services/mcc-assemblies/');
 });
 
-test.each(['desktop', 'mobile'])('%s Projects dropdown exposes all six application areas and closes on navigation', (mode) => {
+test.each(['desktop', 'mobile'])('%s Industries dropdown exposes all six application areas and closes on navigation', (mode) => {
   render(<><Navigation /><LocationProbe /></>);
   if (mode === 'mobile') click(container.querySelector('.mobile-menu-btn'));
   const scope = mode === 'mobile' ? '#mobile-navigation' : '.nav-links.desktop';
-  const trigger = container.querySelector(`${scope} [aria-label="Show project applications"]`);
+  const trigger = container.querySelector(`${scope} [aria-label="Show industries"]`);
   expect(trigger.getAttribute('aria-expanded')).toBe('false');
   click(trigger);
   expect(trigger.getAttribute('aria-expanded')).toBe('true');
-  const links = [...container.querySelectorAll('#project-navigation a')];
+  const links = [...container.querySelectorAll('#industry-navigation a')];
   expect(links).toHaveLength(6);
   expect(links.map((link) => link.textContent)).toEqual(applications.map((item) => item.title));
   expect(links.map((link) => link.getAttribute('href'))).toEqual(applications.map((item) => `/applications/${item.slug}/`));
-  expect(container.querySelector('#project-navigation .nav-dropdown-heading').textContent).toBe('Automation for Your Application');
-  click(container.querySelector('#project-navigation a[href="/applications/fountain-water-feature-automation/"]'));
+  expect(container.querySelector('#industry-navigation .nav-dropdown-heading').textContent).toBe('Automation for Your Application');
+  click(container.querySelector('#industry-navigation a[href="/applications/fountain-water-feature-automation/"]'));
   expect(container.querySelector('output').textContent).toBe('/applications/fountain-water-feature-automation/');
-  expect(container.querySelector('#project-navigation')).toBeNull();
+  expect(container.querySelector('#industry-navigation')).toBeNull();
   if (mode === 'mobile') expect(container.querySelector('#mobile-navigation')).toBeNull();
 });
 
-test('only one top-menu dropdown opens and its contracting link reaches the existing section', () => {
+test('only one top-menu dropdown opens and navigation links reach their corresponding sections', () => {
   render(<><Navigation /><LocationProbe /></>);
   const servicesTrigger = container.querySelector('[aria-label="Show services"]');
-  const projectsTrigger = container.querySelector('[aria-label="Show project applications"]');
+  const industriesTrigger = container.querySelector('[aria-label="Show industries"]');
   click(servicesTrigger);
-  click(projectsTrigger);
+  click(industriesTrigger);
   expect(servicesTrigger.getAttribute('aria-expanded')).toBe('false');
   expect(container.querySelector('#service-navigation')).toBeNull();
   click(servicesTrigger);
-  expect(projectsTrigger.getAttribute('aria-expanded')).toBe('false');
-  expect(container.querySelector('#project-navigation')).toBeNull();
+  expect(industriesTrigger.getAttribute('aria-expanded')).toBe('false');
+  expect(container.querySelector('#industry-navigation')).toBeNull();
   click(container.querySelector('#service-navigation a[href="/#contracting"]'));
   expect(container.querySelector('output').textContent).toBe('/#contracting');
   expect(container.querySelector('#service-navigation')).toBeNull();
-  click(container.querySelector('.nav-projects .nav-link'));
+  click(container.querySelector('.nav-industries .nav-link'));
   expect(container.querySelector('output').textContent).toBe('/#applications');
+  const projectsLink = container.querySelector('.nav-links.desktop > .nav-link[href="/#projects"]');
+  expect(projectsLink.textContent).toBe('Projects');
+  click(projectsLink);
+  expect(container.querySelector('output').textContent).toBe('/#projects');
+  const aboutLink = container.querySelector('.nav-links.desktop > .nav-link[href="/#why-us"]');
+  expect(aboutLink.textContent).toBe('About');
+  click(aboutLink);
+  expect(container.querySelector('output').textContent).toBe('/#why-us');
 });
 
-test('Projects dropdown closes on Escape with restored focus and on an outside tap', () => {
+test('Industries dropdown closes on Escape with restored focus and on an outside tap', () => {
   render(<Navigation />);
-  const trigger = container.querySelector('[aria-label="Show project applications"]');
+  const trigger = container.querySelector('[aria-label="Show industries"]');
   click(trigger);
   act(() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true })));
-  expect(container.querySelector('#project-navigation')).toBeNull();
+  expect(container.querySelector('#industry-navigation')).toBeNull();
   expect(document.activeElement).toBe(trigger);
   click(trigger);
   act(() => document.body.dispatchEvent(new Event('pointerdown', { bubbles: true })));
-  expect(container.querySelector('#project-navigation')).toBeNull();
+  expect(container.querySelector('#industry-navigation')).toBeNull();
   expect(trigger.getAttribute('aria-expanded')).toBe('false');
 });
 
@@ -394,20 +402,22 @@ test('homepage adds pool, fountain and contracting content while retaining six o
   expect(container.querySelectorAll('#automation-faqs details')).toHaveLength(4);
 });
 
-test('header, hero and mobile-menu motion controls stay synchronized without changing navigation', () => {
+test('hero and mobile-menu motion controls stay synchronized without changing navigation', () => {
   render(<App />);
   const links = [...container.querySelectorAll('.navigation a')].map((link) => link.getAttribute('href'));
-  click(container.querySelector('.nav-motion-control .motion-control'));
+  const heroControl = container.querySelector('.hero-motion-control .motion-control');
+  expect(container.querySelector('.nav-motion-control')).toBeNull();
+  click(heroControl);
   expect(container.querySelector('.automation-motion').dataset.motion).toBe('off');
-  expect(container.querySelector('.hero-motion-control .motion-control').getAttribute('aria-pressed')).toBe('true');
-  expect(container.querySelector('.nav-motion-control .motion-control').getAttribute('aria-label')).toBe('Play decorative animations');
+  expect(heroControl.getAttribute('aria-pressed')).toBe('true');
+  expect(heroControl.getAttribute('aria-label')).toBe('Play decorative animations');
   expect([...container.querySelectorAll('.navigation a')].map((link) => link.getAttribute('href'))).toEqual(links);
   click(container.querySelector('.mobile-menu-btn'));
   const mobileControl = container.querySelector('.mobile-motion-control .motion-control');
   expect(mobileControl.getAttribute('aria-pressed')).toBe('true');
   click(mobileControl);
   expect(container.querySelector('.automation-motion').dataset.motion).toBe('full');
-  expect(container.querySelector('.hero-motion-control .motion-control').getAttribute('aria-pressed')).toBe('false');
+  expect(heroControl.getAttribute('aria-pressed')).toBe('false');
   expect(window.localStorage.getItem('voltronix-motion-paused')).toBe('false');
 });
 

@@ -2,7 +2,7 @@
 
 The latest update adapts the animation and industrial styling of https://prosaeed.vercel.app/ to this website's existing red, white, grey and charcoal palette. It adds floating equipment-photo panels, circuit/data-flow backgrounds, staggered entrances, red edge highlights and refined hover effects. See `REFERENCE_STYLE_UPDATE.md` for the scope and verification. Both RAR and ZIP include editable source and the ready-built `build/` folder.
 
-Responsive React website for control panel engineering, automation applications and site contracting in Dubai and across the UAE. The current release has 14 public pages. Original business copy, photographs, links, SEO metadata and integrations are preserved. The top Services dropdown includes the six panel services and “From the Panel to the Field”; the Projects dropdown lists the six “Automation for Your Application” areas on desktop and mobile.
+Responsive React website for control panel engineering, automation applications and site contracting in Dubai and across the UAE. The current release has 14 public pages. Original business copy, photographs, links, SEO metadata and integrations are preserved. The top Services dropdown includes the six panel services and “From the Panel to the Field”; the Industries dropdown lists the six “Automation for Your Application” areas on desktop and mobile.
 
 ## Run the included production website
 
@@ -30,7 +30,7 @@ Open **http://localhost:3000**. Source changes reload automatically. npm ci inst
 
 ## Animation controls
 
-Use the pause icon in the desktop header or **Pause motion** in the mobile navigation/hero to stop decorative animation. The choice is remembered locally, and all controls stay synchronized. Smaller/touch devices use quieter effects. Reduced-motion preferences, data-saving/2G connections where supported, and browsers without observer support get the complete static design. Continuous effects pause off screen or when the tab is hidden. Text is visible before JavaScript loads.
+Use **Pause motion** in the homepage hero or mobile navigation to stop decorative animation. The choice is remembered locally, and all controls stay synchronized. Smaller/touch devices use quieter effects. Reduced-motion preferences, data-saving/2G connections where supported, and browsers without observer support get the complete static design. Continuous effects pause off screen or when the tab is hidden. Text is visible before JavaScript loads.
 
 The reference's cyan/orange palette, personal biography, code sample and performance counters have not been added. Existing images and all company content remain. The graphics are decorative, not live equipment measurements. No new dependency, image download, font request or canvas/WebGL renderer is added. The measured increase in main JavaScript and CSS is 5,846 gzip bytes combined; live speed measurements were unavailable.
 
@@ -87,7 +87,7 @@ The site URL in `site.json` should include HTTPS and omit the trailing slash. Co
 
 The project cards are labelled as illustrative applications. Replace them with verified project descriptions, approved photos and confirmed figures when available. Visitors can browse the application-example carousel with the arrows, touch scrolling, indicators or thumbnails. A focused project track also supports Left/Right, Home and End keys; reduced-motion settings are respected.
 
-In the top navigation, clicking Projects scrolls to the six application cards; its arrow opens links to their dedicated pages. The “From the Panel to the Field” entry under Services scrolls to the existing contracting section. Dropdowns close on navigation, Escape or an outside tap, and only one opens at a time.
+The top navigation follows the supplied reference with a larger original logo, Home, Services, About, Industries, Projects, Contact and a red Get a Quote button. Industries scrolls to the six application cards; its arrow opens links to their dedicated pages. Projects scrolls to the application-example carousel, About reaches the company approach section, and Get a Quote reaches the contact form. The “From the Panel to the Field” entry under Services scrolls to the existing contracting section. Dropdowns close on navigation, Escape or an outside tap, and only one opens at a time.
 
 ## Replacing original panel photos
 
